@@ -1,0 +1,6 @@
+flask
+numpy
+matplotlib
+flask_wtf
+wtforms
+uuid

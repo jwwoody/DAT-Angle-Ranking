@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!---<img src="data:image/png;base64,{{ plots }}"/>-->
+    <img src="static/tmp{{tmpID}}.png" align="left"/>
+    <h4>Rank the four angles from smallest to largest in the boxes below</h4>
+    <form method="POST">
+        {{form.smallest}} &lt {{form.secondSmallest}} &lt {{form.secondLargest}} &lt {{form.largest}}
+        <input  type="submit" name="Submit!" value="Submit!">
+        <br>
+        <b>{{result}}</b>
+        <br>
+        <br>
+        <br><input class="btn btn-primary" name="Play Again (Same Angle Difference)" type="submit" value="Play Again (Same Angle Difference)"> <input class="btn btn-primary" type="submit" value="Change Angle Difference" name="Change Angle Difference">
+    </form>   
+</body>
+</html>
