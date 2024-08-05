@@ -9,6 +9,8 @@ from flask_wtf import FlaskForm
 from wtforms import SelectField
 import uuid
 
+plt.switch_backend('Agg') 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'leroyJenkins'
 
