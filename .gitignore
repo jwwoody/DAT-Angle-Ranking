@@ -3,3 +3,6 @@ static/*
 
 # exception to the rule
 !static/.gitkeep 
+
+# exclude venv
+dat/

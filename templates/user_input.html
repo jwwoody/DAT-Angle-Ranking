@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angle Difference Input</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
-    <h1>What is the difference that you want between angles?</h1>
-    <form method="POST" action="/">
-        <div class="form-group">
-            <p>I want a <input type="number", name="variance" id="quantity" min="1" max="36" value="30" > degree difference between angles. (Enter a number between 1 and 36) </p>
+    <div class="center-container">
+        <div class="modern-card">
+            <h1>Choose Angle Difference</h1>
+            <form method="POST" action="/">
+                <div class="form-group">
+                    <p>I want a <input type="number" name="variance" id="quantity" min="1" max="36" value="30"> degree difference between angles.<br><span style="font-size:0.97em;color:#718096;">(Enter a number between 1 and 36)</span></p>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
         </div>
-        <input class="btn btn-primary" type="submit" value="submit">
-    </form>
-    
+    </div>
 </body>
-<!-- <img src="example_angle.jpg"/> -->
 </html>

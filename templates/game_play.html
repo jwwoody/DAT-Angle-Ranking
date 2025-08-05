@@ -2,22 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Angle Ranking Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
-    <!---<img src="data:image/png;base64,{{ plots }}"/>-->
-    <img src="static/tmp{{tmpID}}.png" align="left"/>
-    <h4>Rank the four angles from smallest to largest in the boxes below</h4>
-    <form method="POST">
-        {{form.smallest}} &lt {{form.secondSmallest}} &lt {{form.secondLargest}} &lt {{form.largest}}
-        <input  type="submit" name="Submit!" value="Submit!">
-        <br>
-        <b>{{result}}</b>
-        <br>
-        <br>
-        <br><input class="btn btn-primary" name="Play Again (Same Angle Difference)" type="submit" value="Play Again (Same Angle Difference)"> <input class="btn btn-primary" type="submit" value="Change Angle Difference" name="Change Angle Difference">
-    </form>   
+    <div class="center-container">
+        <div class="modern-card" style="max-width: 700px;">
+            <img src="/static/tmp{{tmpID}}.png" alt="Angle Diagram" style="display: block; margin: 0 auto 2rem auto; width: 100%; max-width: 520px; height: auto; border-radius: 14px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); background: #f8fafc; padding: 0.7rem;">
+            <h2 style="font-size: 1.2rem; color: #2a4365; margin-bottom: 1.1rem;">Rank the four angles from smallest to largest</h2>
+            <form method="POST" style="text-align: left;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.1rem; justify-content: center;">
+                    {{form.smallest}} <span style="font-size:1.2em; color:#718096;">&lt;</span>
+                    {{form.secondSmallest}} <span style="font-size:1.2em; color:#718096;">&lt;</span>
+                    {{form.secondLargest}} <span style="font-size:1.2em; color:#718096;">&lt;</span>
+                    {{form.largest}}
+                </div>
+                <div style="display: flex; justify-content: center; width: 100%;">
+                    <input class="btn btn-primary" type="submit" name="Submit!" value="Submit!">
+                </div>
+                {% if result %}
+                <div style="margin-top: 1.2rem; font-weight: 500; color: #3182ce; font-size: 1.08em; text-align: center; width: 100%;">
+                    {{result}}
+                </div>
+                {% endif %}
+                <div style="margin-top: 2.2rem; display: flex; gap: 0.7rem; flex-wrap: wrap; justify-content: center;">
+                    <input class="btn btn-primary" name="Play Again (Same Angle Difference)" type="submit" value="Play Again (Same Angle Difference)">
+                    <input class="btn btn-primary" type="submit" value="Change Angle Difference" name="Change Angle Difference">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
