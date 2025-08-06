@@ -167,6 +167,8 @@ def test(angles):
                 pass
 
     session['id'] = str(uuid.uuid4())[:8]
+    # Ensure 'static' directory exists before saving
+    os.makedirs('static', exist_ok=True)
     plt.savefig('static/tmp' + session['id'] + '.png')
     return buf
 
