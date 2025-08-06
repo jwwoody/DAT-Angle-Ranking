@@ -148,9 +148,24 @@ def test(angles):
         ax.set_xlim([0, 10])
         
     # plt.show(block=False)
+    import os
+    import glob
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    
+
+    # Clean up old images if more than 30 exist
+    image_files = sorted(
+        glob.glob('static/tmp*.png'),
+        key=os.path.getmtime
+    )
+    max_images = 30
+    if len(image_files) >= max_images:
+        for f in image_files[:len(image_files)-max_images+1]:
+            try:
+                os.remove(f)
+            except Exception:
+                pass
+
     session['id'] = str(uuid.uuid4())[:8]
     plt.savefig('static/tmp' + session['id'] + '.png')
     return buf
