@@ -1,0 +1,115 @@
+:root {
+    --background-gradient: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+    --text-color: #222;
+    --card-bg: #fff;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1.5px 4px rgba(0,0,0,0.04);
+    --card-title-color: #2a4365;
+    --input-bg: #f1f5f9;
+    --input-border: #cbd5e1;
+    --input-focus-bg: #fff;
+    --input-focus-border: #4299e1;
+    --btn-bg: linear-gradient(90deg, #4299e1 0%, #3182ce 100%);
+    --btn-hover-bg: linear-gradient(90deg, #3182ce 0%, #4299e1 100%);
+    --btn-color: #fff;
+    --btn-shadow: 0 2px 8px rgba(66,153,225,0.08);
+    --btn-hover-shadow: 0 4px 16px rgba(66,153,225,0.13);
+    --highlight-color: #90cdf4;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: var(--background-gradient);
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+body.dark-mode {
+    --background-gradient: linear-gradient(120deg, #23272f 0%, #181c22 100%);
+    --text-color: #e2e8f0;
+    --card-bg: #23272f;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.25), 0 1.5px 4px rgba(0,0,0,0.18);
+    --card-title-color: #90cdf4;
+    --input-bg: #23272f;
+    --input-border: #4a5568;
+    --input-focus-bg: #181c22;
+    --input-focus-border: #63b3ed;
+    --btn-bg: linear-gradient(90deg, #2b6cb0 0%, #2c5282 100%);
+    --btn-hover-bg: linear-gradient(90deg, #2c5282 0%, #2b6cb0 100%);
+    --btn-color: #e2e8f0;
+    --btn-shadow: 0 2px 8px rgba(66,153,225,0.18);
+    --btn-hover-shadow: 0 4px 16px rgba(66,153,225,0.23);
+    --highlight-color: #90cdf4;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.modern-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    max-width: 420px;
+    width: 100%;
+    margin: 2rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.modern-card h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--card-title-color);
+}
+
+.modern-card h2 {
+    color: var(--highlight-color);
+}
+
+.modern-card p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+}
+
+.modern-card input[type="number"] {
+    width: 70px;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    margin: 0 0.3rem;
+    background: var(--input-bg);
+    color: var(--text-color);
+    transition: border 0.2s, background 0.2s;
+}
+
+.modern-card input[type="number"]:focus {
+    border: 1.5px solid var(--input-focus-border);
+    outline: none;
+    background: var(--input-focus-bg);
+}
+
+.modern-card .btn-primary {
+    background: var(--btn-bg);
+    color: var(--btn-color);
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.4rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1.2rem;
+    box-shadow: var(--btn-shadow);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.modern-card .btn-primary:hover {
+    background: var(--btn-hover-bg);
+    box-shadow: var(--btn-hover-shadow);
+}

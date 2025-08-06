@@ -1,8 +1,10 @@
 # exclude everything
 static/*
 
-# exception to the rule
-!static/.gitkeep 
+# exceptions to the rule
+!static/.gitkeep
+!static/css/
+!static/css/main.css
 
 # exclude venv
 dat/
