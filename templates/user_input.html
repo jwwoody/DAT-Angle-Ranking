@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angle Difference Input</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
-<body>
-    <div class="center-container">
-        <div class="modern-card">
-            <h1>Choose Angle Difference</h1>
-            <form method="POST" action="/">
-                <div class="form-group">
-                    <p>I want a <input type="number" name="variance" id="quantity" min="1" max="36" value="30" step="1" pattern="\\d+" inputmode="numeric" required> degree difference between angles.<br><span style="font-size:0.97em;color:#718096;">(Enter a whole number between 1 and 36)</span></p>
-                </div>
-                <input class="btn btn-primary" type="submit" value="Submit">
-            </form>
-        </div>
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>DAT Angle Ranking</title>
+{% endblock %}
+
+{% block body %}
+<div class="center-container">
+    <div class="modern-card">
+        <h1>Choose Angle Difference</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <p>I want a <input type="number" name="variance" id="quantity" min="1" max="36" value="30" step="1" pattern="\\d+" inputmode="numeric" required> degree difference between angles.<br><span style="font-size:0.97em;color:#718096;">(Enter a whole number between 1 and 36)</span></p>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
