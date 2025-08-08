@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}A fun web app for practicing customizable angle ranking and angle discrimination.{% endblock %}">
+    <meta name="keywords" content="angle ranking, angle discrimination, angle generator, dat exam, perceptual ability, education, practice">
+    <meta name="author" content="DAT Angle Ranking">
+    <meta property="og:title" content="{% block og_title %}Customizable DAT Angle Ranking and Angle Discrimination Game{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Practice ranking angles visually.{% endblock %}">
+    <meta property="og:image" content="{{ url_for('static', filename='example_angle.jpg', _external=True) }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>{% block title %}DAT Angle Ranking Game{% endblock %}</title>
     {% block head %}{% endblock %}
 </head>
 <body>
-    {% block body %}{% endblock %}
+    <main>
+        {% block body %}{% endblock %}
+    </main>
 </body>
 </html>

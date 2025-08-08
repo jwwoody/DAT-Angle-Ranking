@@ -5,6 +5,8 @@ static/*
 !static/.gitkeep
 !static/css/
 !static/css/main.css
+!static/robots.txt
+!static/sitemap.xml
 
 # exclude venv
 dat/
