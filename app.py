@@ -15,6 +15,11 @@ plt.switch_backend('Agg')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'leroyJenkins'
 
+# Serve favicon.ico from /static/favicon.ico at the root URL
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 # Serve robots.txt and sitemap.xml from root
 @app.route('/robots.txt')
 def robots_txt():
