@@ -1,4 +1,5 @@
-from flask import Flask, redirect, render_template, url_for, request, session
+from flask import Flask, redirect, render_template, url_for, request, session, send_from_directory
+import os
 import numpy as np
 import random
 import math
@@ -13,6 +14,15 @@ plt.switch_backend('Agg')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'leroyJenkins'
+
+# Serve robots.txt and sitemap.xml from root
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml')
 
 # Where to input the angle differential
 @app.route('/', methods=['GET', 'POST'])
@@ -181,5 +191,3 @@ class Form(FlaskForm):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
