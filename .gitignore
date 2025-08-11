@@ -3,6 +3,7 @@ static/*
 
 # exceptions to the rule
 !static/.gitkeep
+!static/favicon.ico
 !static/css/
 !static/css/main.css
 !static/robots.txt
