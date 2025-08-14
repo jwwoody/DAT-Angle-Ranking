@@ -1,4 +1,5 @@
 from flask import Flask, redirect, render_template, url_for, request, session, send_from_directory
+from flask_sitemap import Sitemap
 import os
 import numpy as np
 import random
@@ -14,6 +15,8 @@ plt.switch_backend('Agg')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'leroyJenkins'
+
+ext = Sitemap(app=app)
 
 # Serve favicon.ico from /static/favicon.ico at the root URL
 @app.route('/favicon.ico')
@@ -36,13 +39,19 @@ def send():
         variance_input = request.form['variance']
         session['tolerance'] = variance_input
         session['plot_exists'] = None
-        return redirect(url_for('visualize'))
+        return redirect(url_for('practice'))
     
     return render_template('user_input.html')
 
+
+# Register sitemap generators for main routes
+@ext.register_generator
+def practice():
+    yield 'practice', {}
+
 # The Plot Page
-@app.route('/visualize', methods=['GET', 'POST'])
-def visualize():  
+@app.route('/practice', methods=['GET', 'POST'])
+def practice():  
     resultOutput = 'Push Submit to check answer'
     
     if request.method == 'POST':

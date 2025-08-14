@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: {{ url_for('static', filename='sitemap.xml', _external=True) }}
+Sitemap: http://datangleranking.com/sitemap.xml
