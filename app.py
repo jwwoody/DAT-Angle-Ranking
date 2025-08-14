@@ -50,16 +50,22 @@ def practice():
     yield 'practice', {}
 
 # The Plot Page
+
 @app.route('/practice', methods=['GET', 'POST'])
-def practice():  
+def practice():
+    # Ensure required session variables are set
+    if 'tolerance' not in session:
+        # Set a default tolerance and redirect to input page
+        session['tolerance'] = 30
+        session['plot_exists'] = None
+        return redirect(url_for('send'))
+
     resultOutput = 'Push Submit to check answer'
-    
+
     if request.method == 'POST':
         print(request)
         if 'Submit!' in request.form:
-                        
             userAnswers = request.form
-
             userAnswer = [0,0,0,0]
             smallest = int(userAnswers['smallest'])
             userAnswer[smallest-1] = 1
@@ -69,52 +75,44 @@ def practice():
             userAnswer[secondLargest-1] = 3
             largest = int(userAnswers['largest'])
             userAnswer[largest-1] = 4
-            
             answer = [int(session['smallest']), int(session['secondSmallest']), int(session['secondLargest']), int(session['largest'])]
-
             if userAnswer == answer:
                 resultOutput = 'Correct!'
             else:
-                resultOutput = 'Wrong... {}<{}<{}<{}'.format(np.where(np.array(answer) == 1)[0][0] + 1,np.where(np.array(answer) == 2)[0][0] + 1,np.where(np.array(answer) == 3)[0][0] + 1,np.where(np.array(answer) == 4)[0][0] + 1)
+                resultOutput = 'Wrong... {}<{}<{}<{}'.format(
+                    np.where(np.array(answer) == 1)[0][0] + 1,
+                    np.where(np.array(answer) == 2)[0][0] + 1,
+                    np.where(np.array(answer) == 3)[0][0] + 1,
+                    np.where(np.array(answer) == 4)[0][0] + 1)
         elif "Change Angle Difference" in request.form:
             session.clear()
             return redirect(url_for('send'))
-
         elif "Play Again (Same Angle Difference)" in request.form:
             session['plot_exists'] = None
 
-    if session['plot_exists'] == None:
+    if session.get('plot_exists') is None:
         TOLERANCE = int(session['tolerance'])
-        
         base_angle = random.randint(40, 150 - 3 * TOLERANCE)
-        
         test_angles = [base_angle,
                        base_angle + 1 * TOLERANCE,
                        base_angle + 2 * TOLERANCE,
                        base_angle + 3 * TOLERANCE]
-        
         random.shuffle(test_angles)
-    
         buf = test(test_angles)
-        
         temp = np.argsort(test_angles)
         answers = np.empty_like(temp)
         answers[temp] = np.arange(len(test_angles)) + 1
         answers = list(answers)
-        
         session['smallest'] = str(answers[0])
         session['secondSmallest'] = str(answers[1])
         session['secondLargest'] = str(answers[2])
         session['largest'] = str(answers[3])
-        
         # Embed the result in the html output.
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        
         session['plot_exists'] = 'yip!'
-        
-    form = Form()    
-    
-    return render_template('game_play.html', form=form, result = resultOutput, tmpID = session['id'])
+
+    form = Form()
+    return render_template('game_play.html', form=form, result=resultOutput, tmpID=session['id'])
 
 def test(angles):
     # unpack and create angles
