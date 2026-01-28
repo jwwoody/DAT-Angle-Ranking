@@ -15,8 +15,9 @@ plt.switch_backend('Agg')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'leroyJenkins'
-# For local development, comment out the line below:
-app.config['SERVER_NAME'] = 'datangleranking.com'
+# For local development, comment out the lines below:
+app.config['SERVER_NAME'] = 'www.datangleranking.com'
+app.config['PREFERRED_URL_SCHEME'] = 'https'
 
 ext = Sitemap(app=app)
 
