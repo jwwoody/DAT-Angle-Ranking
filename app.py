@@ -15,6 +15,8 @@ plt.switch_backend('Agg')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'leroyJenkins'
+# For local development, comment out the line below:
+app.config['SERVER_NAME'] = 'datangleranking.com'
 
 ext = Sitemap(app=app)
 
@@ -23,14 +25,10 @@ ext = Sitemap(app=app)
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-# Serve robots.txt and sitemap.xml from root
+# Serve robots.txt from root
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt')
-
-@app.route('/sitemap.xml')
-def sitemap_xml():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml')
 
 # Where to input the angle differential
 @app.route('/', methods=['GET', 'POST'])
@@ -46,7 +44,13 @@ def send():
 
 # Register sitemap generators for main routes
 @ext.register_generator
-def practice():
+def index():
+    # Generator for homepage
+    yield 'send', {}
+
+@ext.register_generator
+def practice_sitemap():
+    # Generator for practice page
     yield 'practice', {}
 
 # The Plot Page
