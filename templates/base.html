@@ -13,11 +13,26 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.url }}">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="{{ request.url }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <title>{% block title %}DAT Angle Ranking Game{% endblock %}</title>
     {% block head %}{% endblock %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "DAT Angle Ranking",
+      "url": "https://www.datangleranking.com",
+      "description": "Free interactive DAT angle ranking and discrimination practice tool for dental school preparation",
+      "educationalLevel": "Higher Education",
+      "audience": {
+        "@type": "EducationalAudience",
+        "audienceType": "Pre-dental students"
+      }
+    }
+    </script>
 </head>
 <body>
     <main>
