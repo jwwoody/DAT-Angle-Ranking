@@ -2,18 +2,60 @@
 
 {% block head %}
     <title>Free DAT Angle Ranking Generator | DAT Angle Ranking Practice Tool</title>
+    <style>
+        .ad-container {
+            max-width: 100%;
+            margin: 1.5rem auto;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+        }
+        .responsive-ad {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
 <div class="center-container">
     <div class="modern-card">
+        <!-- Top Ad -->
+        <div class="ad-container">
+            <ins class="adsbygoogle responsive-ad"
+                 style="display:block"
+                 data-ad-client="ca-pub-4473065776641796"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
         <h1>Choose Angle Difference</h1>
+        {% if error %}
+        <div style="color: #e53e3e; margin-bottom: 1rem; font-weight: 500;">{{ error }}</div>
+        {% endif %}
         <form method="POST" action="/">
             <div class="form-group">
                 <p>I want a <input type="number" name="variance" id="quantity" min="1" max="36" value="30" step="1" pattern="\\d+" inputmode="numeric" required> degree difference between angles.<br><span style="font-size:0.97em;color:#718096;">(Enter a whole number between 1 and 36)</span></p>
             </div>
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
+        
+        <!-- Bottom Ad -->
+        <div class="ad-container">
+            <ins class="adsbygoogle responsive-ad"
+                 style="display:block"
+                 data-ad-client="ca-pub-4473065776641796"
+                 data-ad-slot="9876543210"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
 </div>
 {% endblock %}

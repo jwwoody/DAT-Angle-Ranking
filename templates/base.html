@@ -23,6 +23,180 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4473065776641796"
          crossorigin="anonymous"></script>
     
+    <!-- Ad Failure Handler -->
+    <script>
+    window.adFailureHandler = {
+        init: function() {
+            // Wait for DOM to be ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', this.setupAdHandlers.bind(this));
+            } else {
+                this.setupAdHandlers();
+            }
+        },
+        
+        setupAdHandlers: function() {
+            const adContainers = document.querySelectorAll('.ad-container, .top-ad-popup');
+            
+            adContainers.forEach((container, index) => {
+                // Check if we should show this ad based on frequency rules
+                if (this.shouldShowAd(container)) {
+                    this.addCloseButton(container);
+                    this.checkAdLoading(container);
+                } else {
+                    // Hide the ad container entirely
+                    container.style.display = 'none';
+                }
+            });
+            
+            // Track page visits for ad frequency
+            this.trackPageVisit();
+        },
+        
+        shouldShowAd: function(container) {
+            // Check if this is the practice page (game_play.html)
+            const isPracticePage = (
+                window.location.pathname.includes('/practice') ||
+                document.querySelector('form[method="POST"]') && 
+                document.querySelector('input[name="Submit!"]')
+            );
+            
+            // Always show ads on non-practice pages (home, user input, etc.)
+            if (!isPracticePage) {
+                return true;
+            }
+            
+            // For practice page only, use frequency control
+            const now = Date.now();
+            const lastAdShown = parseInt(localStorage.getItem('lastAdShown') || '0');
+            const submissionCount = parseInt(localStorage.getItem('submissionCount') || '0');
+            
+            // Show ad if:
+            // 1. Never shown before, OR
+            // 2. More than 5 minutes (300000ms) have passed, OR  
+            // 3. More than 3 submissions since last ad
+            const timeSinceLastAd = now - lastAdShown;
+            const shouldShow = (
+                lastAdShown === 0 || 
+                timeSinceLastAd > 300000 || 
+                submissionCount >= 3
+            );
+            
+            if (shouldShow) {
+                // Reset counters when showing ad
+                localStorage.setItem('lastAdShown', now.toString());
+                localStorage.setItem('submissionCount', '0');
+            }
+            
+            return shouldShow;
+        },
+        
+        trackPageVisit: function() {
+            // Only track submissions on practice page (game_play.html)
+            const isPracticePage = (
+                window.location.pathname.includes('/practice') ||
+                document.querySelector('form[method="POST"]') && 
+                document.querySelector('input[name="Submit!"]')
+            );
+            
+            if (isPracticePage) {
+                const currentCount = parseInt(localStorage.getItem('submissionCount') || '0');
+                localStorage.setItem('submissionCount', (currentCount + 1).toString());
+            }
+        },
+        
+        addCloseButton: function(container) {
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.className = 'ad-close-btn';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                background: rgba(0,0,0,0.6);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                font-size: 14px;
+                line-height: 1;
+                cursor: pointer;
+                z-index: 1001;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+            
+            closeBtn.addEventListener('click', () => {
+                container.style.display = 'none';
+                // When user manually closes ad, extend the time before next ad
+                const now = Date.now();
+                localStorage.setItem('lastAdShown', now.toString());
+                localStorage.setItem('submissionCount', '0');
+            });
+            
+            // Make container relative if not already
+            if (getComputedStyle(container).position === 'static') {
+                container.style.position = 'relative';
+            }
+            
+            container.appendChild(closeBtn);
+        },
+        
+        checkAdLoading: function(container) {
+            const adElement = container.querySelector('.adsbygoogle');
+            if (!adElement) return;
+            
+            // Check if ad loaded after a delay
+            setTimeout(() => {
+                const adHeight = adElement.offsetHeight;
+                const adHasContent = adElement.innerHTML.trim() !== '';
+                
+                // If ad appears to have failed loading
+                if (adHeight < 50 && !adHasContent) {
+                    this.handleAdFailure(container);
+                }
+            }, 3000);
+            
+            // Also listen for AdSense errors
+            window.addEventListener('error', (e) => {
+                if (e.message && e.message.includes('adsbygoogle')) {
+                    this.handleAdFailure(container);
+                }
+            });
+        },
+        
+        handleAdFailure: function(container) {
+            // Add a fallback message or hide the container
+            const fallback = container.querySelector('.ad-fallback');
+            if (!fallback) {
+                const fallbackDiv = document.createElement('div');
+                fallbackDiv.className = 'ad-fallback';
+                fallbackDiv.innerHTML = '<small style="color: #666; font-style: italic;">Ad could not be loaded</small>';
+                fallbackDiv.style.cssText = `
+                    padding: 10px;
+                    text-align: center;
+                    background: rgba(0,0,0,0.05);
+                    border-radius: 4px;
+                `;
+                container.appendChild(fallbackDiv);
+            }
+        }
+    };
+    
+    // Initialize when script loads
+    window.adFailureHandler.init();
+    
+    // Debug function - remove after testing
+    window.resetAdFrequency = function() {
+        localStorage.removeItem('lastAdShown');
+        localStorage.removeItem('submissionCount');
+        console.log('Ad frequency data cleared');
+        location.reload();
+    };
+    </script>
+    
     {% block head %}{% endblock %}
     <script type="application/ld+json">
     {
