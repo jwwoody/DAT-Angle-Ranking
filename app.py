@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, url_for, request, session, send_from_directory, abort, jsonify, make_response
 from flask_sitemap import Sitemap
 import os
+from dotenv import load_dotenv
 import numpy as np
 import random
 import math
@@ -13,10 +14,13 @@ import uuid
 import logging
 from werkzeug.exceptions import NotFound, InternalServerError, BadRequest
 
+# Load environment variables from .env file
+load_dotenv()
+
 plt.switch_backend('Agg') 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'leroyJenkins'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-key-change-in-production')
 
 # Only set SERVER_NAME for production deployment
 if os.getenv('FLASK_ENV') == 'production' or os.getenv('PRODUCTION'):
@@ -361,4 +365,4 @@ class Form(FlaskForm):
     
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)

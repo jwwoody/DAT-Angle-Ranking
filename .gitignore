@@ -1,13 +1,47 @@
-# exclude everything
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Virtual environments
+dat/
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Flask
+instance/
+.webassets-cache
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# exclude everything in static except what we want
 static/*
 
-# exceptions to the rule
+# exceptions to the rule  
 !static/.gitkeep
 !static/favicon.ico
 !static/css/
 !static/css/main.css
 !static/robots.txt
 !static/sitemap.xml
-
-# exclude venv
-dat/

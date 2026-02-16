@@ -2,9 +2,57 @@
 
 {% block head %}
     <title>Angle Ranking Game</title>
+    <style>
+        .top-ad-popup {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            max-width: 320px;
+            width: 90%;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 8px;
+        }
+        .responsive-ad {
+            display: block;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .top-ad-popup {
+                max-width: 280px;
+                top: 5px;
+                padding: 6px;
+            }
+        }
+        /* Add some top padding to main content to avoid overlap */
+        .center-container {
+            padding-top: 80px;
+        }
+        @media (max-width: 768px) {
+            .center-container {
+                padding-top: 70px;
+            }
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
+<!-- Top Ad Popup -->
+<div class="top-ad-popup">
+    <ins class="adsbygoogle responsive-ad"
+         style="display:block"
+         data-ad-client="ca-pub-4473065776641796"
+         data-ad-slot="1111111111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
 <div class="center-container">
     <div class="modern-card" style="max-width: 700px;">
         <img src="/static/tmp{{tmpID}}.png" alt="Four angles for DAT angle ranking practice - rank from smallest to largest angle" style="display: block; margin: 0 auto 2rem auto; width: 100%; max-width: 520px; height: auto; border-radius: 14px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); background: #f8fafc; padding: 0.7rem;">

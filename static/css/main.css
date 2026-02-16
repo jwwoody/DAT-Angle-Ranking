@@ -49,6 +49,44 @@ body.dark-mode {
     min-height: 100vh;
 }
 
+/* Google AdSense Responsive Ads */
+.ad-container {
+    max-width: 100%;
+    margin: 1.5rem auto;
+    text-align: center;
+    padding: 0 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.responsive-ad {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* Mobile optimizations for ads */
+@media (max-width: 768px) {
+    .ad-container {
+        margin: 1rem auto;
+        padding: 0.8rem 0.5rem;
+        border-radius: 6px;
+    }
+    
+    .responsive-ad {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ad-container {
+        margin: 0.8rem auto;
+        padding: 0.6rem 0.3rem;
+    }
+}
+
 .modern-card {
     background: var(--card-bg);
     border-radius: 16px;

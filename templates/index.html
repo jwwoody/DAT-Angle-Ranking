@@ -1,9 +1,57 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
+    <style>
+        .ad-container {
+            max-width: 100%;
+            margin: 1.5rem auto;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        .responsive-ad {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
-<h1>Template</h1>
+<div class="center-container">
+    <div class="modern-card" style="max-width: 700px; margin: 2rem auto;">
+        <!-- Top Ad -->
+        <div class="ad-container">
+            <ins class="adsbygoogle responsive-ad"
+                 style="display:block"
+                 data-ad-client="ca-pub-4473065776641796"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <h1 style="color: var(--card-title-color); text-align: center; margin-bottom: 1.5rem;">DAT Angle Ranking Practice</h1>
+        
+        <div style="text-align: center; padding: 2rem; color: var(--text-color);">
+            <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">Master DAT Angle Ranking</h2>
+            <p style="margin-bottom: 2rem; line-height: 1.6;">Practice ranking angles from smallest to largest to improve your PAT (Perceptual Ability Test) skills for the DAT exam.</p>
+            
+            <a href="{{ url_for('user_input') }}" class="btn btn-primary" style="display: inline-block; padding: 12px 24px; margin: 0.5rem; text-decoration: none; border-radius: 8px; font-weight: 600;">Start Practice</a>
+        </div>
+        
+        <!-- Bottom Ad -->
+        <div class="ad-container">
+            <ins class="adsbygoogle responsive-ad"
+                 style="display:block"
+                 data-ad-client="ca-pub-4473065776641796"
+                 data-ad-slot="9876543210"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</div>
 {% endblock %}
