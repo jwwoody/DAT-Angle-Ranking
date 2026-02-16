@@ -45,3 +45,6 @@ static/*
 !static/css/main.css
 !static/robots.txt
 !static/sitemap.xml
+
+# Temporary generated files
+static/tmp*.png
