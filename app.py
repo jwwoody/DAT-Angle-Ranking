@@ -123,6 +123,18 @@ def robots_txt():
         app.logger.error('robots.txt not found')
         abort(404)
 
+# Serve ads.txt from root
+@app.route('/ads.txt')
+def ads_txt():
+    try:
+        response = make_response(send_from_directory(app.root_path, 'ads.txt'))
+        response.headers['Cache-Control'] = 'public, max-age=86400'  # Cache for 24 hours
+        response.headers['Content-Type'] = 'text/plain'
+        return response
+    except FileNotFoundError:
+        app.logger.error('ads.txt not found')
+        abort(404)
+
 # Where to input the angle differential
 @app.route('/', methods=['GET', 'POST'])
 def send():
