@@ -38,10 +38,30 @@
         <h1 style="color: var(--card-title-color); text-align: center; margin-bottom: 1.5rem;">DAT Angle Ranking Practice</h1>
         
         <div style="text-align: center; padding: 2rem; color: var(--text-color);">
-            <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">Master DAT Angle Ranking</h2>
-            <p style="margin-bottom: 2rem; line-height: 1.6;">Practice ranking angles from smallest to largest to improve your PAT (Perceptual Ability Test) skills for the DAT exam.</p>
+            <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">Master DAT Angle Ranking & Discrimination</h2>
+            <p style="margin-bottom: 1.5rem; line-height: 1.6;">Improve your Perceptual Ability Test (PAT) skills with our free, customizable angle ranking practice tool. Perfect for DAT preparation and dental school admission success.</p>
             
-            <a href="{{ url_for('user_input') }}" class="btn btn-primary" style="display: inline-block; padding: 12px 24px; margin: 0.5rem; text-decoration: none; border-radius: 8px; font-weight: 600;">Start Practice</a>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: var(--card-title-color); margin-bottom: 0.5rem;">🎯 Customizable Difficulty</h3>
+                    <p style="margin: 0; font-size: 0.9rem;">Choose angle differences from 1-36 degrees to match your skill level and gradually increase difficulty.</p>
+                </div>
+                <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: var(--card-title-color); margin-bottom: 0.5rem;">🔄 Unlimited Practice</h3>
+                    <p style="margin: 0; font-size: 0.9rem;">Generate unlimited random angle rankings. No restrictions, no sign-ups, completely free forever.</p>
+                </div>
+                <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: var(--card-title-color); margin-bottom: 0.5rem;">⚡ Instant Feedback</h3>
+                    <p style="margin: 0; font-size: 0.9rem;">Get immediate results with correct answers shown when you make mistakes. Learn and improve quickly.</p>
+                </div>
+            </div>
+            
+            <div style="background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--primary-color); padding: 1rem; margin: 1.5rem 0; text-align: left;">
+                <p style="margin: 0;"><strong>Pro Tip:</strong> Start with 30-degree differences and work your way down to 5-10 degrees to match actual DAT difficulty levels.</p>
+            </div>
+            
+            <a href="{{ url_for('send') }}" class="btn btn-primary" style="display: inline-block; padding: 12px 24px; margin: 0.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">Start Practicing Now</a>
+            <a href="{{ url_for('about') }}" class="btn" style="display: inline-block; padding: 12px 24px; margin: 0.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; background: var(--bg-secondary); color: var(--text-color);">Learn More</a>
         </div>
         
         <!-- Bottom Ad -->

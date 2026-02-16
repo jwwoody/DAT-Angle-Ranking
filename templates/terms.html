@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Terms of Service - DAT Angle Ranking</title>
+    <meta name="description" content="Terms of Service for DAT Angle Ranking practice tool. Learn about usage terms and conditions.">
+{% endblock %}
+
+{% block body %}
+<div class="center-container">
+    <div class="modern-card" style="max-width: 800px; margin: 2rem auto;">
+        <h1 style="color: var(--card-title-color); margin-bottom: 1.5rem;">Terms of Service</h1>
+        <div style="color: var(--text-color); line-height: 1.6;">
+            <p><strong>Last updated:</strong> February 16, 2026</p>
+            
+            <h2>Acceptance of Terms</h2>
+            <p>By accessing and using DAT Angle Ranking, you accept and agree to be bound by the terms and provision of this agreement.</p>
+            
+            <h2>Description of Service</h2>
+            <p>DAT Angle Ranking provides a free online tool for practicing angle ranking and discrimination skills for the Dental Admission Test (DAT) Perceptual Ability Test (PAT) section.</p>
+            
+            <h2>Use License</h2>
+            <p>Permission is granted to temporarily use DAT Angle Ranking for personal, non-commercial educational purposes. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+            <ul>
+                <li>Use the service for commercial purposes without permission</li>
+                <li>Attempt to reverse engineer or copy any functionality</li>
+                <li>Remove any copyright or proprietary notations</li>
+                <li>Use the service in any way that could damage or impair the service</li>
+            </ul>
+            
+            <h2>Educational Purpose</h2>
+            <p>This tool is designed for educational practice only. While we strive for accuracy, we make no warranties about the effectiveness for actual DAT preparation. Always consult official DAT preparation materials.</p>
+            
+            <h2>User Conduct</h2>
+            <p>You agree not to:</p>
+            <ul>
+                <li>Use the service for any unlawful purpose</li>
+                <li>Interfere with or disrupt the service or servers</li>
+                <li>Attempt to gain unauthorized access to any part of the service</li>
+                <li>Upload or transmit viruses or malicious code</li>
+            </ul>
+            
+            <h2>Disclaimer</h2>
+            <p>The materials on DAT Angle Ranking's website are provided on an 'as is' basis. DAT Angle Ranking makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+            
+            <h2>Limitations</h2>
+            <p>In no event shall DAT Angle Ranking or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on DAT Angle Ranking's website.</p>
+            
+            <h2>Accuracy of Materials</h2>
+            <p>The materials appearing on DAT Angle Ranking's website could include technical, typographical, or photographic errors. DAT Angle Ranking does not warrant that any of the materials on its website are accurate, complete, or current.</p>
+            
+            <h2>Modifications</h2>
+            <p>We reserve the right to revise these terms of service at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
+            
+            <h2>Contact Information</h2>
+            <p>If you have any questions about these Terms of Service, please <a href="{{ url_for('contact') }}" style="color: var(--primary-color);">contact us</a>.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

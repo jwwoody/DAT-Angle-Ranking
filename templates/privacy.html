@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Privacy Policy - DAT Angle Ranking</title>
+    <meta name="description" content="Privacy Policy for DAT Angle Ranking - Learn how we protect your privacy when using our angle ranking practice tool.">
+{% endblock %}
+
+{% block body %}
+<div class="center-container">
+    <div class="modern-card" style="max-width: 800px; margin: 2rem auto;">
+        <h1 style="color: var(--card-title-color); margin-bottom: 1.5rem;">Privacy Policy</h1>
+        <div style="color: var(--text-color); line-height: 1.6;">
+            <p><strong>Last updated:</strong> February 16, 2026</p>
+            
+            <h2>Information We Collect</h2>
+            <p>DAT Angle Ranking is committed to protecting your privacy. We collect minimal information to provide our service:</p>
+            
+            <h3>Automatically Collected Information</h3>
+            <ul>
+                <li><strong>Usage Data:</strong> We use local storage in your browser to track ad frequency and improve user experience</li>
+                <li><strong>Analytics:</strong> We may use Google Analytics to understand how users interact with our site</li>
+                <li><strong>Ad Data:</strong> Google AdSense may collect information for personalized advertising</li>
+            </ul>
+            
+            <h3>Information You Provide</h3>
+            <ul>
+                <li><strong>Practice Settings:</strong> Your angle difference preferences are stored locally in your browser</li>
+                <li><strong>Contact Form:</strong> If you contact us, we collect the information you provide</li>
+            </ul>
+            
+            <h2>How We Use Your Information</h2>
+            <ul>
+                <li>To provide and improve our angle ranking practice tool</li>
+                <li>To manage ad frequency for better user experience</li>
+                <li>To respond to your inquiries and support requests</li>
+                <li>To analyze usage patterns and improve our service</li>
+            </ul>
+            
+            <h2>Third-Party Services</h2>
+            <p>We use the following third-party services:</p>
+            <ul>
+                <li><strong>Google AdSense:</strong> For displaying advertisements. <a href="https://policies.google.com/privacy" target="_blank" style="color: var(--primary-color);">Google Privacy Policy</a></li>
+                <li><strong>Google Analytics:</strong> For website analytics. <a href="https://policies.google.com/privacy" target="_blank" style="color: var(--primary-color);">Google Privacy Policy</a></li>
+            </ul>
+            
+            <h2>Cookies and Local Storage</h2>
+            <p>We use local storage and cookies to:</p>
+            <ul>
+                <li>Remember your practice settings</li>
+                <li>Manage ad display frequency</li>
+                <li>Provide analytics data</li>
+            </ul>
+            <p>You can clear your browser's local storage and cookies at any time through your browser settings.</p>
+            
+            <h2>Data Security</h2>
+            <p>We implement appropriate security measures to protect your information. However, no method of transmission over the internet is 100% secure.</p>
+            
+            <h2>Children's Privacy</h2>
+            <p>Our service is not directed to children under 13. We do not knowingly collect personal information from children under 13.</p>
+            
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date.</p>
+            
+            <h2>Contact Us</h2>
+            <p>If you have questions about this Privacy Policy, please <a href="{{ url_for('contact') }}" style="color: var(--primary-color);">contact us</a>.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

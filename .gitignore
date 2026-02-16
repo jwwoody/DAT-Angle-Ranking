@@ -48,3 +48,6 @@ static/*
 
 # Temporary generated files
 static/tmp*.png
+
+# Keep important static files for AdSense
+!static/sitemap.xml

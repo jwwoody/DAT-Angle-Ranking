@@ -135,6 +135,18 @@ def ads_txt():
         app.logger.error('ads.txt not found')
         abort(404)
 
+# Serve sitemap.xml from root
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    try:
+        response = make_response(send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml'))
+        response.headers['Cache-Control'] = 'public, max-age=86400'  # Cache for 24 hours
+        response.headers['Content-Type'] = 'application/xml'
+        return response
+    except FileNotFoundError:
+        app.logger.error('sitemap.xml not found')
+        abort(404)
+
 # Where to input the angle differential
 @app.route('/', methods=['GET', 'POST'])
 def send():
@@ -173,6 +185,31 @@ def index():
 def practice_sitemap():
     # Generator for practice page
     yield 'practice', {}
+
+@ext.register_generator
+def static_pages():
+    # Generator for static pages
+    yield 'about', {}
+    yield 'contact', {}
+    yield 'privacy', {}
+    yield 'terms', {}
+
+# Static pages required for AdSense approval
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
 
 # The Plot Page
 

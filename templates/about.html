@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>About - DAT Angle Ranking Practice Tool</title>
+    <meta name="description" content="Learn about DAT Angle Ranking, the free practice tool for improving angle discrimination skills for the Dental Admission Test (DAT).">
+{% endblock %}
+
+{% block body %}
+<div class="center-container">
+    <div class="modern-card" style="max-width: 800px; margin: 2rem auto;">
+        <h1 style="color: var(--card-title-color); margin-bottom: 1.5rem;">About DAT Angle Ranking</h1>
+        <div style="color: var(--text-color); line-height: 1.6;">
+            
+            <h2>What is DAT Angle Ranking?</h2>
+            <p>DAT Angle Ranking is a free, interactive practice tool designed to help pre-dental students master angle discrimination and ranking skills for the Dental Admission Test (DAT) Perceptual Ability Test (PAT) section.</p>
+            
+            <h2>Why We Created This Tool</h2>
+            <p>The angle ranking section of the DAT PAT can be challenging for many students. We recognized the need for a customizable, accessible practice tool that allows students to:</p>
+            <ul>
+                <li>Practice with varying difficulty levels</li>
+                <li>Adjust angle differences to match their skill level</li>
+                <li>Get immediate feedback on their performance</li>
+                <li>Access unlimited practice questions for free</li>
+            </ul>
+            
+            <h2>How It Works</h2>
+            <ol>
+                <li><strong>Choose Your Difficulty:</strong> Select an angle difference (1-36 degrees) between the four angles</li>
+                <li><strong>Analyze the Angles:</strong> View four randomly generated angles displayed as line segments</li>
+                <li><strong>Rank from Smallest to Largest:</strong> Use the dropdown menus to rank the angles</li>
+                <li><strong>Get Instant Feedback:</strong> See if you're correct and learn the right answer if you're wrong</li>
+                <li><strong>Practice More:</strong> Generate unlimited new problems to keep improving</li>
+            </ol>
+            
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Customizable Difficulty:</strong> Adjust the angle difference to match your skill level</li>
+                <li><strong>Randomized Problems:</strong> Each question features unique, randomly generated angles</li>
+                <li><strong>Instant Feedback:</strong> Know immediately if you're right or wrong</li>
+                <li><strong>Mobile Friendly:</strong> Practice on any device, anywhere</li>
+                <li><strong>Completely Free:</strong> No registration, no fees, no limitations</li>
+            </ul>
+            
+            <h2>Educational Purpose</h2>
+            <p>This tool is specifically designed for educational purposes to supplement DAT preparation. While we strive for accuracy and effectiveness, we recommend using this alongside official DAT preparation materials and consulting with your dental school advisors.</p>
+            
+            <h2>Technology</h2>
+            <p>Built with modern web technologies including Python Flask, HTML5, CSS3, and JavaScript. The angle visualization uses matplotlib to generate clear, accurate angle representations.</p>
+            
+            <h2>Feedback and Improvements</h2>
+            <p>We continuously work to improve this tool based on user feedback. If you have suggestions, find bugs, or want to contribute, please <a href="{{ url_for('contact') }}" style="color: var(--primary-color);">contact us</a>.</p>
+            
+            <h2>For Pre-Dental Students</h2>
+            <p>Good luck with your DAT preparation! Remember that consistent practice is key to success. Use this tool regularly, start with larger angle differences and gradually work your way down to smaller, more challenging differences.</p>
+            
+            <div style="background: rgba(34, 197, 94, 0.1); border-left: 4px solid #22c55e; padding: 1rem; margin: 2rem 0;">
+                <p style="margin: 0;"><strong>Tip:</strong> The DAT typically uses angle differences of 5-15 degrees. Once you can consistently identify angles with 10-degree differences, you'll be well-prepared for the actual test!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
