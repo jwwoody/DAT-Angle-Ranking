@@ -35,6 +35,9 @@ if not app.debug:
     logging.basicConfig(level=logging.INFO)
     app.logger.setLevel(logging.INFO)
 
+if not os.getenv('SECRET_KEY'):
+    app.logger.warning('SECRET_KEY is not set; using the insecure default key. Set SECRET_KEY in the environment or .env file.')
+
 ext = Sitemap(app=app)
 
 # Error handlers for better SEO and user experience
@@ -189,12 +192,17 @@ def practice_sitemap():
 @ext.register_generator
 def static_pages():
     # Generator for static pages
+    yield 'guide', {}
     yield 'about', {}
     yield 'contact', {}
     yield 'privacy', {}
     yield 'terms', {}
 
 # Static pages required for AdSense approval
+@app.route('/guide')
+def guide():
+    return render_template('guide.html')
+
 @app.route('/about')
 def about():
     return render_template('about.html')

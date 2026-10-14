@@ -75,27 +75,6 @@ body.dark-mode {
     max-width: 100%;
 }
 
-/* Ad close button styles */
-.ad-close-btn {
-    opacity: 0.7;
-    transition: opacity 0.2s ease, background 0.2s ease;
-}
-
-.ad-close-btn:hover {
-    opacity: 1;
-    background: rgba(0,0,0,0.8) !important;
-}
-
-/* Ad fallback styles */
-.ad-fallback {
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 /* Mobile optimizations for ads */
 @media (max-width: 768px) {
     .ad-container {
@@ -107,12 +86,6 @@ body.dark-mode {
     .responsive-ad {
         width: 100% !important;
         max-width: 100% !important;
-    }
-    
-    .ad-close-btn {
-        width: 18px;
-        height: 18px;
-        font-size: 12px;
     }
 }
 

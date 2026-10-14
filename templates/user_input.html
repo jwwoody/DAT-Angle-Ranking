@@ -20,7 +20,7 @@
 
 {% block body %}
 <div class="center-container">
-    <div class="modern-card">
+    <div class="modern-card" style="max-width: 640px;">
         <!-- Top Ad -->
         <div class="ad-container">
             <ins class="adsbygoogle responsive-ad"
@@ -34,7 +34,9 @@
             </script>
         </div>
         
-        <h1>Choose Angle Difference</h1>
+        <h1>DAT Angle Ranking Practice</h1>
+        <p style="text-align: left; line-height: 1.6;">Practice the angle ranking (angle discrimination) section of the DAT Perceptual Ability Test. Each problem shows four randomly generated angles for you to rank from smallest to largest. Smaller angle differences make the problems harder.</p>
+        <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Choose Angle Difference</h2>
         {% if error %}
         <div role="alert" style="color: var(--error-color); margin-bottom: 1rem; font-weight: 500;">{{ error }}</div>
         {% endif %}
@@ -44,6 +46,17 @@
             </div>
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
+
+        <div style="text-align: left; line-height: 1.6; margin-top: 2rem;">
+            <h2 style="font-size: 1.2rem;">How It Works</h2>
+            <ol>
+                <li><strong>Pick a difficulty.</strong> The number you enter is the gap in degrees between each angle and the next largest. A 30-degree difference is a good place to start.</li>
+                <li><strong>Rank the angles.</strong> You'll see four angles drawn in random orientations with arms of different lengths. Use the dropdowns to put them in order from smallest to largest.</li>
+                <li><strong>Check your answer.</strong> Press Submit to see if you were right. If not, the correct order is shown so you can see what you missed.</li>
+                <li><strong>Keep going.</strong> Play again at the same difficulty, or lower the difference as your accuracy improves.</li>
+            </ol>
+            <p style="font-size: 1rem;">New to angle ranking? Read our <a href="{{ url_for('guide') }}" style="color: var(--primary-color);">strategy guide</a> for techniques to compare close angles and a step-by-step practice plan.</p>
+        </div>
         
         <!-- Bottom Ad -->
         <div class="ad-container">
