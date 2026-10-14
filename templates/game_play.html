@@ -4,19 +4,6 @@
     <title>Angle Ranking Game | DAT PAT Practice</title>
     <meta name="description" content="Practice DAT angle ranking with customizable difficulty. Rank angles from smallest to largest to improve your perceptual ability test skills.">
     <style>
-        .top-ad-popup {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            max-width: 320px;
-            width: 90%;
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            padding: 8px;
-        }
         .responsive-ad {
             display: block;
             margin: 0 auto;
@@ -24,58 +11,39 @@
         .ad-close-btn:hover {
             background: rgba(0,0,0,0.8) !important;
         }
-        @media (max-width: 768px) {
-            .top-ad-popup {
-                max-width: 280px;
-                top: 5px;
-                padding: 6px;
-            }
-        }
-        /* Add some top padding to main content to avoid overlap */
-        .center-container {
-            padding-top: 80px;
-        }
-        @media (max-width: 768px) {
-            .center-container {
-                padding-top: 70px;
-            }
-        }
     </style>
 {% endblock %}
 
 {% block body %}
-<!-- Top Ad Popup -->
-<div class="top-ad-popup">
-    <ins class="adsbygoogle responsive-ad"
-         style="display:block"
-         data-ad-client="ca-pub-4473065776641796"
-         data-ad-slot="1111111111"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
-
 <div class="center-container">
     <div class="modern-card" style="max-width: 700px;">
+        <!-- Top Ad -->
+        <div class="ad-container">
+            <ins class="adsbygoogle responsive-ad"
+                 style="display:block"
+                 data-ad-client="ca-pub-4473065776641796"
+                 data-ad-slot="1111111111"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
         <img src="/static/tmp{{tmpID}}.png" alt="Four angles for DAT angle ranking practice - rank from smallest to largest angle" style="display: block; margin: 0 auto 2rem auto; width: 100%; max-width: 520px; height: auto; border-radius: 14px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); background: #f8fafc; padding: 0.7rem;">
-        <h2 style="font-size: 1.2rem; color: #2a4365; margin-bottom: 1.1rem;">Rank the four angles from smallest to largest</h2>
+        <h2 id="rank-instructions" style="font-size: 1.2rem; color: #2a4365; margin-bottom: 1.1rem;">Rank the four angles from smallest to largest</h2>
         <form method="POST" style="text-align: left;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.1rem; justify-content: center;">
-                {{form.smallest}} <span style="font-size:1.2em; color:#718096;">&lt;</span>
-                {{form.secondSmallest}} <span style="font-size:1.2em; color:#718096;">&lt;</span>
-                {{form.secondLargest}} <span style="font-size:1.2em; color:#718096;">&lt;</span>
-                {{form.largest}}
+            <div role="group" aria-labelledby="rank-instructions" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.1rem; justify-content: center;">
+                {{ form.smallest(**{'aria-label': 'Smallest angle'}) }} <span class="muted-text" style="font-size:1.2em;" aria-hidden="true">&lt;</span>
+                {{ form.secondSmallest(**{'aria-label': 'Second smallest angle'}) }} <span class="muted-text" style="font-size:1.2em;" aria-hidden="true">&lt;</span>
+                {{ form.secondLargest(**{'aria-label': 'Second largest angle'}) }} <span class="muted-text" style="font-size:1.2em;" aria-hidden="true">&lt;</span>
+                {{ form.largest(**{'aria-label': 'Largest angle'}) }}
             </div>
             <div style="display: flex; justify-content: center; width: 100%;">
                 <input class="btn btn-primary" type="submit" name="Submit!" value="Submit!">
             </div>
-            {% if result %}
-            <div style="margin-top: 1.2rem; font-weight: 500; color: #3182ce; font-size: 1.08em; text-align: center; width: 100%;">
-                {{result}}
+            <div role="status" aria-live="polite" style="margin-top: 1.2rem; font-weight: 500; color: var(--primary-color); font-size: 1.08em; text-align: center; width: 100%;">
+                {% if result %}{{result}}{% endif %}
             </div>
-            {% endif %}
             <div style="margin-top: 2.2rem; display: flex; gap: 0.7rem; flex-wrap: wrap; justify-content: center;">
                 <input class="btn btn-primary" name="Play Again (Same Angle Difference)" type="submit" value="Play Again (Same Angle Difference)">
                 <input class="btn btn-primary" type="submit" value="Change Angle Difference" name="Change Angle Difference">

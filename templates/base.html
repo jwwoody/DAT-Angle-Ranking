@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_description %}Free DAT Angle Ranking Generator: Practice, customize, and master DAT angle ranking and angle discrimination for the PAT. Get help with DAT angle ranking, angle discrimination, and predental PAT prep. Use our interactive angle ranking generator for DAT angle ranking help, angle discrimination generator, and full customization. Improve your DAT perceptual ability with the best DAT angle ranking and discrimination practice tool online.{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Free DAT Angle Ranking Generator: Practice, customize, and master DAT angle ranking and angle discrimination for the PAT. Get help with DAT angle ranking, angle discrimination, and predental PAT prep. Use our interactive angle ranking generator for DAT angle ranking help, angle discrimination generator, and full customization. Practice DAT perceptual ability skills with a free angle ranking and discrimination tool.{% endblock %}">
     <meta name="keywords" content="Angle ranking generator free, angle ranking, angle discrimination, angle generator, angle ranking generator, dat exam, perceptual ability, education, practice, ">
     <meta name="author" content="DAT Angle Ranking">
     <meta property="og:title" content="{% block og_title %}Customizable DAT Angle Ranking and Angle Discrimination Game{% endblock %}">
@@ -36,7 +36,7 @@
         },
         
         setupAdHandlers: function() {
-            const adContainers = document.querySelectorAll('.ad-container, .top-ad-popup');
+            const adContainers = document.querySelectorAll('.ad-container');
             
             adContainers.forEach((container, index) => {
                 // Check if we should show this ad based on frequency rules
@@ -107,8 +107,10 @@
         
         addCloseButton: function(container) {
             const closeBtn = document.createElement('button');
+            closeBtn.type = 'button';
             closeBtn.innerHTML = '×';
             closeBtn.className = 'ad-close-btn';
+            closeBtn.setAttribute('aria-label', 'Close advertisement');
             closeBtn.style.cssText = `
                 position: absolute;
                 top: 5px;
@@ -140,6 +142,8 @@
             if (getComputedStyle(container).position === 'static') {
                 container.style.position = 'relative';
             }
+            // Keep the close button above the ad, not on top of it
+            container.style.paddingTop = '30px';
             
             container.appendChild(closeBtn);
         },
@@ -187,14 +191,6 @@
     
     // Initialize when script loads
     window.adFailureHandler.init();
-    
-    // Debug function - remove after testing
-    window.resetAdFrequency = function() {
-        localStorage.removeItem('lastAdShown');
-        localStorage.removeItem('submissionCount');
-        console.log('Ad frequency data cleared');
-        location.reload();
-    };
     </script>
     
     {% block head %}{% endblock %}
@@ -214,7 +210,8 @@
     </script>
 </head>
 <body>
-    <nav style="background: var(--card-bg); padding: 0.5rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav aria-label="Main navigation" style="background: var(--card-bg); padding: 0.5rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
             <a href="{{ url_for('send') }}" style="font-weight: bold; color: var(--card-title-color); text-decoration: none;">DAT Angle Ranking</a>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
@@ -226,7 +223,7 @@
             </div>
         </div>
     </nav>
-    <main>
+    <main id="main-content">
         {% block body %}{% endblock %}
     </main>
     <footer style="background: var(--card-bg); padding: 1rem; margin-top: 2rem; text-align: center; border-top: 1px solid rgba(0,0,0,0.1);">
@@ -235,6 +232,7 @@
             <a href="{{ url_for('privacy') }}" style="color: var(--text-color);">Privacy Policy</a> | 
             <a href="{{ url_for('terms') }}" style="color: var(--text-color);">Terms of Service</a> | 
             <a href="{{ url_for('contact') }}" style="color: var(--text-color);">Contact</a></p>
+            <p style="font-size: 0.8rem;">DAT is a registered trademark of the American Dental Association (ADA). This site is an independent practice tool and is not affiliated with or endorsed by the ADA.</p>
         </div>
     </footer>
 </body>

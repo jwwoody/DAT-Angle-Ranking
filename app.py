@@ -159,8 +159,8 @@ def send():
             
             try:
                 tolerance_val = int(variance_input)
-                if tolerance_val <= 0 or tolerance_val > 50:
-                    return render_template('user_input.html', error='Variance must be between 1 and 50')
+                if tolerance_val <= 0 or tolerance_val > 36:
+                    return render_template('user_input.html', error='Variance must be between 1 and 36')
                 session['tolerance'] = str(tolerance_val)
             except ValueError:
                 app.logger.warning(f'Invalid variance input: {variance_input}')
@@ -280,7 +280,7 @@ def practice():
         if session.get('plot_exists') is None:
             try:
                 TOLERANCE = int(session['tolerance'])
-                if TOLERANCE <= 0 or TOLERANCE > 50:
+                if TOLERANCE <= 0 or TOLERANCE > 36:
                     app.logger.warning(f'Invalid tolerance value: {TOLERANCE}')
                     return redirect(url_for('send'))
                 
