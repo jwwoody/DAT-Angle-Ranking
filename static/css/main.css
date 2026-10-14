@@ -192,3 +192,32 @@ select:focus-visible {
 .muted-text {
     color: var(--muted-text-color);
 }
+
+/* Collapsible "How it works" info on the landing page */
+.info-toggle {
+    margin-top: 1.5rem;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.info-toggle summary {
+    cursor: pointer;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-align: center;
+}
+
+.info-toggle ol {
+    margin: 0.75rem 0 0.5rem;
+    padding-left: 1.25rem;
+    line-height: 1.5;
+}
+
+.modern-card .info-toggle p {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.info-toggle a {
+    color: var(--primary-color);
+}
