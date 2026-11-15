@@ -1,0 +1,61 @@
+{% extends 'article_layout.html' %}
+
+{% block title %}How to Compare Angles That Are Almost the Same Size | DAT Angle Ranking{% endblock %}
+{% block meta_description %}Practical methods for telling apart angles that differ by only a few degrees: reference lines, rotation, pairwise comparison, and a simple order of operations for angle ranking.{% endblock %}
+{% block og_title %}How to Compare Angles That Are Almost the Same Size{% endblock %}
+{% block og_description %}Methods for judging angles that differ by only a few degrees.{% endblock %}
+
+{% block article_h1 %}How to Compare Angles That Are Almost the Same Size{% endblock %}
+
+{% block article_body %}
+<p>Ranking four angles that are 30 degrees apart is easy. Ranking four that are 5 degrees apart is a different skill. At that point you can't rely on a general impression of which angle "looks wider." You need a repeatable way to compare, and you need to know where your eyes tend to go wrong. This article covers methods that work when the differences are small. The <a href="{{ url_for('guide') }}" style="color: var(--primary-color);">strategy guide</a> has a shorter overview of the basics.</p>
+
+<h2>Know What You Are Measuring</h2>
+<p>An angle is the amount of turn between its two arms. It is not the length of the arms, the area between them, or the distance between their endpoints. All of those change when you redraw the same angle with longer lines, and your eyes are tempted to use them anyway. Before you compare anything, decide that the only thing you will judge is the opening at the vertex, the point where the arms meet.</p>
+<p>A practical habit is to start each angle at the vertex and trace outward along each arm for a short distance only. Close to the vertex, the two arms are easy to see as two directions. Far from it, you are looking at two separate line ends, and your brain starts comparing distances instead of directions.</p>
+
+<h2>Step 1: Find the Extremes</h2>
+<p>With four angles, you rarely need to compare all of them carefully. Scan quickly and pick the one that is clearly the smallest or clearly the largest. If one angle stands out, you have fixed one end of the ranking and only three remain. If you can fix both ends, you only have to decide the middle pair, which is a single comparison.</p>
+<p>When no angle stands out, that is information too. It means the differences are small, and you should switch to the slower methods below instead of staring at the whole picture.</p>
+
+<h2>Step 2: Use a Reference</h2>
+<p>Comparing four angles to each other means making six pairwise judgments. Comparing each angle to one fixed reference means making four. The most useful references are the ones your eye already knows:</p>
+<ul>
+    <li><strong>90 degrees.</strong> A right angle is easy to recognize. Ask of each angle: clearly under, about equal, or clearly over?</li>
+    <li><strong>45 degrees.</strong> Half of a right angle. Useful for sharper angles.</li>
+    <li><strong>60 degrees.</strong> The corner of an equilateral triangle. Many people find this a good midpoint between 45 and 90.</li>
+    <li><strong>The straight line, 180 degrees.</strong> For wide angles, ask how much smaller than a flat line the opening is.</li>
+</ul>
+<p>The point is not to read exact degrees. It is to sort the angles into rough bins first (under 90, near 90, over 90) so that your fine comparison happens only among angles in the same bin. If three angles are clearly under 90 and one is clearly over, the large one is settled and you are down to a three-way comparison.</p>
+
+<h2>Step 3: Rotate Mentally</h2>
+<p>Angles in these problems point in different directions, and direction affects how big an angle looks. To remove that effect, imagine turning each angle so that one arm lies flat along the bottom, like a hinge lying on a table. Then the only thing left to judge is how far the other arm has lifted. It can help to think of a laptop lid: a lid tilted a little way back and a lid tilted much further back are easy to tell apart when the base is flat, even if you can't state the exact numbers.</p>
+<p>Do this for every angle in the same way, for example always laying the lower arm flat to the right. Using the same convention each time makes the images comparable.</p>
+
+<h2>Step 4: Compare in Pairs</h2>
+<p>If two angles still look equal after Steps 1 to 3, set the other two aside. Look at just the two you are unsure about and move your attention back and forth between them. Pay attention to a single feature each time: where one arm would cross an imagined horizontal line, or whether the gap between the arms near the vertex looks wider in one than the other. A narrow comparison of two things is far more reliable than a vague look at four.</p>
+<p>It also helps to check the same pair from the opposite direction. Ask "which is smaller?" and then "which is larger?" If your answers contradict each other, you do not have a real preference yet, and that pair is close enough that you should move on and come back if time allows.</p>
+
+<h2>Step 5: Use What You Have Learned About Your Own Bias</h2>
+<p>Most people have consistent tendencies. Some over-estimate angles with long arms. Some find angles opening upward look wider than the same angle opening sideways. Keep track of the mistakes you make in practice. If you notice that you usually rank the long-armed angle too high, build a correction into your routine: when two angles are close and one has longer arms, consciously lean toward the other. The <a href="{{ url_for('article_mistakes') }}" style="color: var(--primary-color);">angle ranking mistakes</a> article lists the most common patterns, and <a href="{{ url_for('article_illusions') }}" style="color: var(--primary-color);">why your eyes misjudge angles</a> explains some of the reasons.</p>
+
+<h2>Practicing These Methods</h2>
+<p>These methods only help if you use them deliberately, and that is easiest to do when the problems are not too hard. In the <a href="{{ url_for('send') }}" style="color: var(--primary-color);">practice tool</a>, the four angles are always evenly spaced: if you choose a difference of 8 degrees, the angles are some starting size, that size plus 8, plus 16 and plus 24. That makes the extremes exactly 24 degrees apart, even though neighboring angles are only 8 apart. This is why Step 1 works so well: finding the largest and smallest is much easier than comparing neighbors.</p>
+<p>Try one session where you use only the reference method (Step 2) and another where you use only pairwise comparison (Step 4). Keep a note of how often you were right with each. You will probably find that one suits you better, and that is the one to lean on when time is short. After that, work on the order of operations: extremes first, references second, pairs last. The <a href="{{ url_for('article_progression') }}" style="color: var(--primary-color);">practice progression</a> article describes how to lower the difficulty setting as you improve.</p>
+
+<h2>A Short Summary</h2>
+<ol>
+    <li>Judge only the opening at the vertex.</li>
+    <li>Find the smallest or largest angle first.</li>
+    <li>Sort the rest against a known reference such as 90 degrees.</li>
+    <li>Mentally rotate so the angles share an orientation.</li>
+    <li>Settle the final close pair by comparing just those two.</li>
+</ol>
+<p>None of these steps needs special equipment, and all of them get faster with repetition.</p>
+{% endblock %}
+
+{% block related %}
+<li><a href="{{ url_for('article_mistakes') }}" style="color: var(--primary-color);">Common Angle Ranking Mistakes and How to Fix Them</a></li>
+<li><a href="{{ url_for('article_illusions') }}" style="color: var(--primary-color);">Why Your Eyes Misjudge Angles</a></li>
+<li><a href="{{ url_for('article_progression') }}" style="color: var(--primary-color);">A Practice Progression for Angle Ranking</a></li>
+{% endblock %}

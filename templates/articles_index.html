@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}DAT Angle Ranking Articles: Techniques, Mistakes and Practice Plans{% endblock %}
+{% block meta_description %}Articles on DAT-style angle ranking: how to compare close angles, common mistakes, a staged practice plan, why your eyes misjudge angles, and an overview of the Perceptual Ability Test.{% endblock %}
+{% block og_title %}DAT Angle Ranking Articles{% endblock %}
+{% block og_description %}Techniques, common mistakes and practice plans for angle ranking.{% endblock %}
+
+{% block body %}
+<div class="center-container">
+    <div class="modern-card" style="max-width: 800px; margin: 2rem auto; text-align: left;">
+        <h1 style="color: var(--card-title-color); margin-bottom: 1.5rem;">Angle Ranking Articles</h1>
+        <div style="color: var(--text-color); line-height: 1.6;">
+            <p>These articles go deeper than the <a href="{{ url_for('guide') }}" style="color: var(--primary-color);">strategy guide</a> on how to rank angles accurately, how to practice, and where angle ranking fits in the Perceptual Ability Test. Each one is written to be used alongside the <a href="{{ url_for('send') }}" style="color: var(--primary-color);">free practice tool</a>.</p>
+
+            <h2><a href="{{ url_for('article_close_angles') }}" style="color: var(--primary-color);">How to Compare Angles That Are Almost the Same Size</a></h2>
+            <p>A step-by-step routine for small differences: find the extremes, sort against a reference, rotate mentally, and settle the last close pair.</p>
+
+            <h2><a href="{{ url_for('article_mistakes') }}" style="color: var(--primary-color);">Common Angle Ranking Mistakes and How to Fix Them</a></h2>
+            <p>Seven habits that cost points, from judging by arm length to answering in the wrong order, and a way to find out which ones you have.</p>
+
+            <h2><a href="{{ url_for('article_progression') }}" style="color: var(--primary-color);">A Practice Progression for Angle Ranking, From Easy to Hard</a></h2>
+            <p>How the angle difference setting works and a staged plan for lowering it, tracking progress and handling plateaus.</p>
+
+            <h2><a href="{{ url_for('article_illusions') }}" style="color: var(--primary-color);">Why Your Eyes Misjudge Angles</a></h2>
+            <p>How arm length, orientation, position and context bias your judgment, with simple self-tests for each.</p>
+
+            <h2><a href="{{ url_for('article_pat_overview') }}" style="color: var(--primary-color);">The DAT Perceptual Ability Test: Where Angle Ranking Fits</a></h2>
+            <p>An overview of the PAT, how angle ranking differs from the other sections, and how to plan practice and pacing.</p>
+
+            <p style="font-size: 0.9rem; margin-top: 2rem;">DAT is a registered trademark of the American Dental Association (ADA). These articles are independent and are not affiliated with or endorsed by the ADA.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

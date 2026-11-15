@@ -1,0 +1,65 @@
+{% extends 'article_layout.html' %}
+
+{% block title %}The DAT Perceptual Ability Test: Where Angle Ranking Fits | DAT Angle Ranking{% endblock %}
+{% block meta_description %}An overview of the Perceptual Ability Test on the Dental Admission Test, what kind of skills its parts measure, how angle ranking differs from the others, and how to plan your practice.{% endblock %}
+{% block og_title %}The DAT Perceptual Ability Test: Where Angle Ranking Fits{% endblock %}
+{% block og_description %}What the Perceptual Ability Test covers and how to plan practice around angle ranking.{% endblock %}
+
+{% block article_h1 %}The DAT Perceptual Ability Test: Where Angle Ranking Fits{% endblock %}
+
+{% block article_body %}
+<p>The Dental Admission Test (DAT) is the standardized exam used for admission to dental schools in the United States and Canada. Most of it is made up of science and reading questions, but one part is unlike anything else you will have studied: the Perceptual Ability Test, usually shortened to PAT. This article explains what the PAT is, how angle ranking fits into it, and how to plan your practice. It is an overview written by an independent practice site, so for the exact format, timing and scoring, always rely on the official DAT Candidate Guide from the American Dental Association (ADA), which is the authority and is updated when the test changes.</p>
+
+<h2>What the PAT Is For</h2>
+<p>The PAT measures spatial and visual skills rather than recalled knowledge. Dentistry involves working in small spaces, judging shapes by sight and by feel, and picturing how a three-dimensional object looks from different directions. The PAT uses puzzle-like questions to test related abilities. Nothing on it requires memorized facts, so you cannot prepare by reading a textbook. You prepare the way you would for a sport: by doing many repetitions.</p>
+
+<h2>The Parts of the PAT</h2>
+<p>The PAT is made up of several separate sections, each with its own kind of puzzle. The sections that candidates generally describe are:</p>
+<ul>
+    <li><strong>Keyhole.</strong> You are shown a three-dimensional object and decide which of several openings it could pass through.</li>
+    <li><strong>Top-front-end (TFE).</strong> From two views of an object, you work out a third.</li>
+    <li><strong>Angle ranking (also called angle discrimination).</strong> You rank four angles by size.</li>
+    <li><strong>Hole punching.</strong> You picture a folded piece of paper being punched and work out where the holes appear when it is unfolded.</li>
+    <li><strong>Cube counting.</strong> You count the faces of small cubes in a stack that have a given number of painted sides.</li>
+    <li><strong>3D form development (pattern folding).</strong> You decide which three-dimensional shape a flat pattern would make when folded.</li>
+</ul>
+<p>Check the ADA guide for the current list, the order of the sections and how many questions and how much time each one gets, since those details have changed over the years and may change again. The names above are the commonly used ones, and the ADA's own wording may differ slightly.</p>
+
+<h2>How Angle Ranking Differs</h2>
+<p>Most PAT sections ask you to manipulate objects in your head: rotating, unfolding, counting hidden faces. Angle ranking is different because it is almost entirely about perception. There is nothing to rotate or fold, and no logical rule to follow. You have to see which angle is bigger than which, and the differences can be small. That has several practical consequences:</p>
+<ul>
+    <li><strong>It rewards repetition more than insight.</strong> In sections like cube counting, learning a counting system gives a large jump. In angle ranking, improvement is more gradual and comes from training your eye.</li>
+    <li><strong>You can't fully reason your way to an answer.</strong> You can use techniques, such as comparing each angle to 90 degrees, but at some point you rely on how it looks.</li>
+    <li><strong>It is quick per question.</strong> Each problem tends to take less thought than a folding or counting problem, so the main risk is carelessness and rushing, not running out of ideas.</li>
+</ul>
+<p>Because of this, angle ranking is well suited to short, frequent practice sessions, which is what a web tool is good for.</p>
+
+<h2>Planning Your Practice</h2>
+<p>A sensible approach is to allocate your PAT practice across sections according to how you do on each. A candidate who finds cube counting easy and folding hard should spend time on folding. Angle ranking tends to be a section where people are either comfortable early or find it frustrating, so it is worth testing yourself early to see where you stand.</p>
+<p>A reasonable plan has three parts:</p>
+<ol>
+    <li><strong>Take a baseline.</strong> Use official or reputable full-length practice material to see how you do on every section, and note which ones cost you the most.</li>
+    <li><strong>Practice each section in short blocks.</strong> For angle ranking, ten to fifteen minutes with the <a href="{{ url_for('send') }}" style="color: var(--primary-color);">practice tool</a> is enough. See the <a href="{{ url_for('article_progression') }}" style="color: var(--primary-color);">practice progression</a> for how to set the difficulty.</li>
+    <li><strong>Re-test periodically.</strong> Every couple of weeks, check whether the weak sections are catching up.</li>
+</ol>
+<p>The PAT is only one part of the DAT, and the scoring of the whole test is described in the official guide. Time spent on perceptual practice has to be balanced against science and reading preparation.</p>
+
+<h2>Time Management on Angle Ranking</h2>
+<p>We cannot tell you how many questions you will have or how long you will have for them, since that is for the ADA to specify. We can describe general principles that apply whatever the time limit:</p>
+<ul>
+    <li>Work out the average time you have per question from the official figures, and practice at close to that pace once you are accurate.</li>
+    <li>Do not let a single hard pair eat the time for several other questions. A close pair is partly a coin flip no matter how long you look.</li>
+    <li>Answer every question if the rules allow it. Check the ADA guide for how unanswered questions are treated, rather than assuming.</li>
+    <li>Practice finishing the section as a whole, not just individual problems, so that pacing becomes habit.</li>
+</ul>
+
+<h2>What This Tool Does and Does Not Do</h2>
+<p>The practice tool generates random sets of four evenly spaced angles and checks your ranking. It is meant to train the specific skill of comparing angles, with a difficulty you set yourself. It is not a copy of the real test, its problems are not real exam questions, and it does not replace official practice tests. It is one useful piece of a PAT study plan, and the other sections need their own practice.</p>
+<p>If you want to improve at the angle section, start with the <a href="{{ url_for('guide') }}" style="color: var(--primary-color);">strategy guide</a>, then read about <a href="{{ url_for('article_close_angles') }}" style="color: var(--primary-color);">comparing close angles</a>.</p>
+{% endblock %}
+
+{% block related %}
+<li><a href="{{ url_for('article_progression') }}" style="color: var(--primary-color);">A Practice Progression for Angle Ranking</a></li>
+<li><a href="{{ url_for('article_close_angles') }}" style="color: var(--primary-color);">How to Compare Angles That Are Almost the Same Size</a></li>
+<li><a href="{{ url_for('article_mistakes') }}" style="color: var(--primary-color);">Common Angle Ranking Mistakes and How to Fix Them</a></li>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="center-container">
+    <div class="modern-card" style="max-width: 800px; margin: 2rem auto; text-align: left;">
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><a href="{{ url_for('articles') }}" style="color: var(--primary-color);">&larr; All articles</a></p>
+        <h1 style="color: var(--card-title-color); margin-bottom: 1.5rem;">{% block article_h1 %}{% endblock %}</h1>
+        <div style="color: var(--text-color); line-height: 1.6;">
+            {% block article_body %}{% endblock %}
+
+            <div style="background: var(--bg-secondary); border-left: 4px solid var(--primary-color); padding: 1rem; margin: 2rem 0;">
+                <p style="margin: 0;"><a href="{{ url_for('send') }}" style="color: var(--primary-color);">Open the angle ranking practice tool</a> or read the <a href="{{ url_for('guide') }}" style="color: var(--primary-color);">strategy guide</a>.</p>
+            </div>
+
+            <h2>Related Articles</h2>
+            <ul>
+                {% block related %}{% endblock %}
+                <li><a href="{{ url_for('articles') }}" style="color: var(--primary-color);">All articles</a></li>
+            </ul>
+
+            <p style="font-size: 0.9rem;">DAT is a registered trademark of the American Dental Association (ADA). This article is independent and is not affiliated with or endorsed by the ADA. For current details about the test, see the official DAT Candidate Guide from the ADA.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

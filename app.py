@@ -193,6 +193,12 @@ def practice_sitemap():
 def static_pages():
     # Generator for static pages
     yield 'guide', {}
+    yield 'articles', {}
+    yield 'article_close_angles', {}
+    yield 'article_mistakes', {}
+    yield 'article_progression', {}
+    yield 'article_illusions', {}
+    yield 'article_pat_overview', {}
     yield 'about', {}
     yield 'contact', {}
     yield 'privacy', {}
@@ -202,6 +208,31 @@ def static_pages():
 @app.route('/guide')
 def guide():
     return render_template('guide.html')
+
+# Article pages
+@app.route('/articles')
+def articles():
+    return render_template('articles_index.html')
+
+@app.route('/articles/comparing-close-angles')
+def article_close_angles():
+    return render_template('articles/comparing_close_angles.html')
+
+@app.route('/articles/angle-ranking-mistakes')
+def article_mistakes():
+    return render_template('articles/angle_ranking_mistakes.html')
+
+@app.route('/articles/practice-progression')
+def article_progression():
+    return render_template('articles/practice_progression.html')
+
+@app.route('/articles/why-your-eyes-misjudge-angles')
+def article_illusions():
+    return render_template('articles/visual_illusions.html')
+
+@app.route('/articles/perceptual-ability-test-overview')
+def article_pat_overview():
+    return render_template('articles/pat_overview.html')
 
 @app.route('/about')
 def about():

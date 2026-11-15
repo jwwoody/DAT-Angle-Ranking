@@ -1,0 +1,59 @@
+{% extends 'article_layout.html' %}
+
+{% block title %}Common Angle Ranking Mistakes and How to Fix Them | DAT Angle Ranking{% endblock %}
+{% block meta_description %}Seven common mistakes in DAT-style angle ranking, from judging by arm length to answering in the wrong order, with a simple way to find out which ones you make.{% endblock %}
+{% block og_title %}Common Angle Ranking Mistakes and How to Fix Them{% endblock %}
+{% block og_description %}Seven mistakes that cost points in angle ranking, and how to correct each one.{% endblock %}
+
+{% block article_h1 %}Common Angle Ranking Mistakes and How to Fix Them{% endblock %}
+
+{% block article_body %}
+<p>When you miss an angle ranking problem, it is tempting to put it down to "bad eyes" and move on. In practice, most misses come from a handful of habits, and each habit has a fix. This article lists the mistakes that come up most often when people practice ranking four angles from smallest to largest, and gives a way to work out which ones are yours.</p>
+
+<h2>1. Judging by Arm Length</h2>
+<p><strong>What happens:</strong> An angle with long arms looks bigger than an angle with short arms, even when the opening is the same or smaller. The ends of long arms are far apart, and the eye reads that gap as size.</p>
+<p><strong>Fix:</strong> Pay attention only to the area near the vertex. Mentally shorten every arm to the same length, or cover the far ends with your finger or the cursor if you are practicing on a screen. In the <a href="{{ url_for('send') }}" style="color: var(--primary-color);">practice tool</a> the arm lengths are random on purpose, so this mistake is easy to check: look at whether your wrong answers tend to involve the angle with the longest arms.</p>
+
+<h2>2. Letting Orientation Change Your Judgment</h2>
+<p><strong>What happens:</strong> The same angle can look different depending on whether it opens up, down, left, or right, or whether it is tilted. People often feel that angles lined up with the vertical or horizontal look more "settled" than tilted ones, and that affects the comparison.</p>
+<p><strong>Fix:</strong> Rotate each angle mentally so that one arm is horizontal before you judge it, and do it the same way every time. The <a href="{{ url_for('article_close_angles') }}" style="color: var(--primary-color);">close angles article</a> describes this in more detail.</p>
+
+<h2>3. Comparing Everything to Everything</h2>
+<p><strong>What happens:</strong> You look at all four angles, feel overwhelmed, and flick between them without a plan. This takes time and tends to produce a mushy impression instead of a ranking.</p>
+<p><strong>Fix:</strong> Follow a fixed order: find the smallest or largest, then place the others against a reference such as 90 degrees, then resolve the one close pair. A fixed routine is faster than an improvised one and makes your errors easier to analyze.</p>
+
+<h2>4. Answering in the Wrong Direction</h2>
+<p><strong>What happens:</strong> You correctly work out the order but enter it from largest to smallest, or you read the answer choices backwards. This is a pure careless mistake, and it can happen on a problem you understood perfectly.</p>
+<p><strong>Fix:</strong> Before you commit, restate your ranking in words: "smallest is 3, then 1, then 4, largest is 2." Then check the answer against that sentence. The tool asks for the order from smallest to largest, and the result for a wrong answer is displayed in the same format, so you can compare your answer to the correct one directly.</p>
+
+<h2>5. Mixing Up the Angle Labels</h2>
+<p><strong>What happens:</strong> You rank the angles correctly by how they look, but then enter the position in the grid instead of the label, or you confuse "Angle 2" with "Angle 3" while transferring your ranking to the answer boxes.</p>
+<p><strong>Fix:</strong> Write down or say the labels as you rank, not the positions. If you find yourself making transfer errors, slow down for the final step only. You do not need to slow down your judgment of the angles.</p>
+
+<h2>6. Over-Trusting a First Impression on Close Pairs</h2>
+<p><strong>What happens:</strong> When two angles are within a few degrees, your first impression is close to a coin flip, but it feels like certainty. You stop looking.</p>
+<p><strong>Fix:</strong> Recognize when a pair is close and give it one structured second look: set the other two aside and compare only the pair, as described in the close angles article. If it is still unclear after that, choose and move on. Spending much more time does not usually improve the answer.</p>
+
+<h2>7. Practicing Only at One Difficulty</h2>
+<p><strong>What happens:</strong> You keep practicing at the setting where you are comfortable, so your accuracy looks good but does not improve. Or you jump straight to the smallest difference, miss most problems, and learn nothing from the misses.</p>
+<p><strong>Fix:</strong> Move the difficulty setting up and down deliberately. The <a href="{{ url_for('article_progression') }}" style="color: var(--primary-color);">practice progression</a> article gives a simple way to do this.</p>
+
+<h2>How to Find Out Which Mistakes Are Yours</h2>
+<p>You do not need any special software. After a practice session, make a note of each problem you missed. For each one, answer three questions:</p>
+<ol>
+    <li>Which angle did I get wrong, and was it the one with the longest or shortest arms?</li>
+    <li>Was the wrong angle pointing in an unusual direction, such as downward?</li>
+    <li>Did I feel confident or unsure when I answered?</li>
+</ol>
+<p>A few sessions of notes will show a pattern. If your errors involve long arms, work on mistake 1. If you were confident and still wrong, suspect mistakes 4 or 5. If you were unsure and guessed, the problems were probably just too hard at that setting, and the fix is mistake 7.</p>
+<p>The tool displays the correct order when you miss, so you can look at the picture again with the answer in hand. Trace the arms of the angle you misjudged and ask why it looked the way it did. A minute of that review is worth more than another quick problem.</p>
+
+<h2>Accuracy First, Then Speed</h2>
+<p>Many of these mistakes get worse when you rush. It is usually better to build accuracy at a given difficulty first and then increase your pace, than to push speed from the start. When you do add time pressure, expect accuracy to dip a little and then recover. For current information about how the angle section is timed on the real exam, check the official DAT Candidate Guide from the ADA.</p>
+{% endblock %}
+
+{% block related %}
+<li><a href="{{ url_for('article_close_angles') }}" style="color: var(--primary-color);">How to Compare Angles That Are Almost the Same Size</a></li>
+<li><a href="{{ url_for('article_illusions') }}" style="color: var(--primary-color);">Why Your Eyes Misjudge Angles</a></li>
+<li><a href="{{ url_for('article_progression') }}" style="color: var(--primary-color);">A Practice Progression for Angle Ranking</a></li>
+{% endblock %}

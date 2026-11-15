@@ -1,0 +1,56 @@
+{% extends 'article_layout.html' %}
+
+{% block title %}A Practice Progression for Angle Ranking, From Easy to Hard | DAT Angle Ranking{% endblock %}
+{% block meta_description %}How to use the angle difference setting to build angle ranking skill in stages: where to start, when to move down, how to track accuracy, and what to do when you plateau.{% endblock %}
+{% block og_title %}A Practice Progression for Angle Ranking{% endblock %}
+{% block og_description %}A staged plan for lowering the angle difference as your accuracy improves.{% endblock %}
+
+{% block article_h1 %}A Practice Progression for Angle Ranking, From Easy to Hard{% endblock %}
+
+{% block article_body %}
+<p>The most useful setting in the <a href="{{ url_for('send') }}" style="color: var(--primary-color);">practice tool</a> is the angle difference. It controls how hard every problem is, and it accepts any whole number from 1 to 36 degrees. Used well, it lets you build skill in stages. Used badly, it leads to hours of practice at a level that is either too easy to teach you anything or too hard to learn from. This article describes a simple progression and the reasoning behind it.</p>
+
+<h2>What the Setting Actually Does</h2>
+<p>It helps to know how the problems are built. The tool picks a random starting angle and then creates four angles by adding your chosen difference repeatedly. With a difference of 10, for example, you might see angles of 62, 72, 82 and 92 degrees, shuffled into the four positions. The starting angle is chosen so that the largest of the four stays at or below 150 degrees, and the smallest is never below 40 degrees. Each angle is drawn with randomly chosen arm lengths and a random rotation.</p>
+<p>Two consequences are worth remembering. First, the neighbors in the ranking are always exactly one difference apart. So the difficulty is the same between every adjacent pair, and a smaller setting makes all of them harder at once. Second, the gap between the smallest and the largest is always three times the setting: 30 degrees at a setting of 10, but only 6 degrees at a setting of 2.</p>
+<p>Guessing at random gets a problem right about once in 24 tries, since there are 24 possible orderings of four items. That is about 4 percent. Any accuracy well above that means you are really seeing the differences, and it is a useful baseline for judging whether a setting is too hard to learn from.</p>
+
+<h2>Stage 1: Learn the Method (Large Differences)</h2>
+<p>Start at 25 to 36 degrees. The goal is not to get problems right, since you will get nearly all of them right. The goal is to practice the method on problems where it works easily. On every problem, deliberately do the same things: find the extreme angles first, compare to a reference such as 90 degrees, and check the final order before submitting. Our <a href="{{ url_for('article_close_angles') }}" style="color: var(--primary-color);">article on close angles</a> describes this routine.</p>
+<p>Spend a few short sessions here until the routine feels automatic. If you skip this stage, you tend to develop your own sloppy approach at harder levels and then have to unlearn it.</p>
+
+<h2>Stage 2: Step Down Gradually (24 down to 10 Degrees)</h2>
+<p>Choose a rule for moving down and stick to it. A reasonable one is: once you answer at least 9 of 10 correctly at one setting, in two sessions in a row, drop the difference by about 3 to 5 degrees. This is a rule of thumb that we suggest, not a measured threshold, so adjust it to your own pace. The reason for requiring two sessions is that a single good run can be luck.</p>
+<p>If your accuracy falls below roughly 6 of 10 after a drop, go back up a step for a while. Practice at a level where you are right most of the time but still have to think carries the most benefit, and practice where you are mostly guessing carries the least.</p>
+
+<h2>Stage 3: The Hard Range (9 down to 4 Degrees)</h2>
+<p>This is where most of the improvement is made, and also where progress slows. The differences between neighbors are small enough that you will need the pairwise comparison method and the rotation technique, and you will make real mistakes. At these settings, the review step matters most. After each miss, look at the picture again with the correct order in mind and ask what misled you.</p>
+<p>Use smaller steps here: one or two degrees at a time. A change from 6 to 5 is a larger relative change in difficulty than a change from 30 to 29, because a given error in your perception matters more when the gaps are small.</p>
+
+<h2>Stage 4: The Stress Range (3 Degrees and Below)</h2>
+<p>At a difference of 1 or 2 degrees, the four angles can be within a few degrees of each other in total. Reading these on a screen is close to the limit of what you can see by eye, and the picture is a rendered image with limited resolution. Do not treat 100 percent accuracy here as the goal. Treat these settings as a stress test. They show you how your method behaves when the differences are very small, and they make the middle settings feel easier. A few minutes at a time is enough.</p>
+
+<h2>Mixing In Speed</h2>
+<p>Do not worry about speed in the first stages. After you reach a setting where you are accurate, start timing yourself, for example by setting a phone timer for a fixed number of problems. Move the clock in small steps, and watch accuracy: if accuracy collapses when you speed up, you moved too fast. For the current time limit and number of questions on the actual test, use the official ADA DAT Candidate Guide as your source, because those details can change.</p>
+
+<h2>Tracking Your Progress</h2>
+<p>A paper notebook or simple spreadsheet works fine. For each session, write down the date, the setting, the number of problems and the number you got right. Optionally add one line about what kind of mistake you made most. After a few weeks, the log will tell you what your current level is and whether you are improving. It also removes the guesswork about when to move down a setting.</p>
+
+<h2>When You Plateau</h2>
+<p>Almost everyone stalls at some point. Some things to try:</p>
+<ul>
+    <li><strong>Go back up two or three degrees</strong> and practice with extra attention to method for a few sessions.</li>
+    <li><strong>Change the time of day or session length.</strong> Short sessions, ten to fifteen minutes, are usually better than long ones because attention fades.</li>
+    <li><strong>Review your misses</strong> for a pattern. The <a href="{{ url_for('article_mistakes') }}" style="color: var(--primary-color);">mistakes article</a> has a checklist.</li>
+    <li><strong>Rest.</strong> A day or two off sometimes helps, and it costs you little.</li>
+</ul>
+
+<h2>Keep It in Proportion</h2>
+<p>Angle ranking is one part of a larger test. A solid, steady routine on this section, alongside your practice for the other sections, is better than spending all your time on it. See the <a href="{{ url_for('article_pat_overview') }}" style="color: var(--primary-color);">overview of the Perceptual Ability Test</a> for how it fits in.</p>
+{% endblock %}
+
+{% block related %}
+<li><a href="{{ url_for('article_close_angles') }}" style="color: var(--primary-color);">How to Compare Angles That Are Almost the Same Size</a></li>
+<li><a href="{{ url_for('article_mistakes') }}" style="color: var(--primary-color);">Common Angle Ranking Mistakes and How to Fix Them</a></li>
+<li><a href="{{ url_for('article_pat_overview') }}" style="color: var(--primary-color);">The Perceptual Ability Test: Where Angle Ranking Fits</a></li>
+{% endblock %}

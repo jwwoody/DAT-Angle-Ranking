@@ -19,6 +19,42 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://www.datangleranking.com/articles</loc>
+        <lastmod>2026-11-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.datangleranking.com/articles/comparing-close-angles</loc>
+        <lastmod>2026-11-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.datangleranking.com/articles/angle-ranking-mistakes</loc>
+        <lastmod>2026-11-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.datangleranking.com/articles/practice-progression</loc>
+        <lastmod>2026-11-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.datangleranking.com/articles/why-your-eyes-misjudge-angles</loc>
+        <lastmod>2026-11-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.datangleranking.com/articles/perceptual-ability-test-overview</loc>
+        <lastmod>2026-11-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://www.datangleranking.com/about</loc>
         <lastmod>2026-02-16</lastmod>
         <changefreq>monthly</changefreq>
