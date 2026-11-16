@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block meta_description %}Free DAT Angle Ranking Generator: Practice, customize, and master DAT angle ranking and angle discrimination for the PAT. Get help with DAT angle ranking, angle discrimination, and predental PAT prep. Use our interactive angle ranking generator for DAT angle ranking help, angle discrimination generator, and full customization. Practice DAT perceptual ability skills with a free angle ranking and discrimination tool.{% endblock %}">
-    <meta name="keywords" content="Angle ranking generator free, angle ranking, angle discrimination, angle generator, angle ranking generator, dat exam, perceptual ability, education, practice, ">
+    <meta name="keywords" content="Angle ranking generator free, angle ranking, angle discrimination, angle generator, angle ranking generator, dat exam, perceptual ability, education, practice">
     <meta name="author" content="DAT Angle Ranking">
     <meta property="og:title" content="{% block og_title %}Customizable DAT Angle Ranking and Angle Discrimination Game{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Practice ranking angles visually.{% endblock %}">
-    <meta property="og:image" content="{{ url_for('static', filename='example_angle.jpg', _external=True) }}">
+    <meta property="og:image" content="{{ site_url }}{{ url_for('static', filename='example_angle.jpg') }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:url" content="{{ canonical_url }}">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="{{ request.url }}">
+    <link rel="canonical" href="{{ canonical_url }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">

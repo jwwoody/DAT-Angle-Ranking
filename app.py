@@ -1,5 +1,4 @@
 from flask import Flask, redirect, render_template, url_for, request, session, send_from_directory, abort, jsonify, make_response
-from flask_sitemap import Sitemap
 import os
 from dotenv import load_dotenv
 import numpy as np
@@ -38,7 +37,14 @@ if not app.debug:
 if not os.getenv('SECRET_KEY'):
     app.logger.warning('SECRET_KEY is not set; using the insecure default key. Set SECRET_KEY in the environment or .env file.')
 
-ext = Sitemap(app=app)
+SITE_URL = 'https://www.datangleranking.com'
+
+
+@app.context_processor
+def inject_site_urls():
+    # Always emit the public https URL (the app sits behind a proxy, so
+    # request.url would report http and the internal host).
+    return {'site_url': SITE_URL, 'canonical_url': SITE_URL + request.path}
 
 # Error handlers for better SEO and user experience
 @app.errorhandler(404)
@@ -138,7 +144,8 @@ def ads_txt():
         app.logger.error('ads.txt not found')
         abort(404)
 
-# Serve sitemap.xml from root
+# Serve sitemap.xml from root. This is the hand-maintained static/sitemap.xml
+# (https URLs with lastmod); keep it in sync when adding pages.
 @app.route('/sitemap.xml')
 def sitemap_xml():
     try:
@@ -177,32 +184,6 @@ def send():
         app.logger.error(f'Error in send route: {str(e)}')
         abort(500)
 
-
-# Register sitemap generators for main routes
-@ext.register_generator
-def index():
-    # Generator for homepage
-    yield 'send', {}
-
-@ext.register_generator
-def practice_sitemap():
-    # Generator for practice page
-    yield 'practice', {}
-
-@ext.register_generator
-def static_pages():
-    # Generator for static pages
-    yield 'guide', {}
-    yield 'articles', {}
-    yield 'article_close_angles', {}
-    yield 'article_mistakes', {}
-    yield 'article_progression', {}
-    yield 'article_illusions', {}
-    yield 'article_pat_overview', {}
-    yield 'about', {}
-    yield 'contact', {}
-    yield 'privacy', {}
-    yield 'terms', {}
 
 # Static pages required for AdSense approval
 @app.route('/guide')
