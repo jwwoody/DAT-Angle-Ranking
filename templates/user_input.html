@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Free DAT Angle Ranking Generator | DAT Angle Ranking Practice Tool{% endblock %}
-{% block meta_description %}Set your difficulty level for DAT angle ranking practice. Choose angle differences from 1-36 degrees to customize your perceptual ability test preparation.{% endblock %}
+{% block title %}Free DAT Angle Ranking Practice | Customizable Angle Generator{% endblock %}
+{% block meta_description %}{{ home_description }}{% endblock %}
+{% block og_title %}Free, Customizable DAT Angle Ranking Practice{% endblock %}
+{% block og_description %}{{ home_description }}{% endblock %}
 
 {% block head %}
     <style>
@@ -35,7 +37,9 @@
             </script>
         </div>
         
-        <h1>Choose Angle Difference</h1>
+        <h1>Free DAT Angle Ranking Practice</h1>
+        <p class="home-intro">Practice angle ranking for the DAT Perceptual Ability Test with unlimited, randomly generated questions. Customize the difficulty by choosing how many degrees apart the angles are. Free, no signup.</p>
+        <h2 class="home-form-heading">Choose Angle Difference</h2>
         {% if error %}
         <div role="alert" style="color: var(--error-color); margin-bottom: 1rem; font-weight: 500;">{{ error }}</div>
         {% endif %}
@@ -46,15 +50,7 @@
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
 
-        <details class="info-toggle">
-            <summary>How it works</summary>
-            <ol>
-                <li>Enter the number of degrees between each angle. Smaller numbers are harder.</li>
-                <li>Rank the four angles from smallest to largest.</li>
-                <li>Press Submit to check. If you're wrong, the correct order is shown.</li>
-            </ol>
-            <p>Tips: <a href="{{ url_for('guide') }}">strategy guide</a></p>
-        </details>
+        <p class="home-links"><a href="#how-it-works">How it works and FAQ</a> &middot; <a href="{{ url_for('guide') }}">Strategy guide</a></p>
         
         <!-- Bottom Ad -->
         <div class="ad-container">
@@ -69,5 +65,24 @@
             </script>
         </div>
     </div>
+</div>
+
+<div class="home-info-container">
+    <section class="modern-card home-info" aria-labelledby="how-it-works">
+        <h2 id="how-it-works">How the free DAT angle ranking practice works</h2>
+        <ol>
+            <li><strong>Choose an angle difference</strong> from 1 to 36 degrees. This is how many degrees apart each angle is from the next. Smaller numbers are harder.</li>
+            <li><strong>Look at four random angles</strong>, labeled 1 to 4. Arm lengths and directions are randomized, just like the real test.</li>
+            <li><strong>Rank them from smallest to largest</strong> and press Submit. If your order is wrong, the correct order is shown.</li>
+            <li><strong>Play again or adjust.</strong> Keep the same difficulty for more practice, or lower the angle difference as your accuracy improves.</li>
+        </ol>
+        <p>Not sure where to start? Try 30 degrees, then work down. The <a href="{{ url_for('guide') }}">strategy guide</a> covers techniques for close angles, and the <a href="{{ url_for('article_progression') }}">practice progression</a> article lays out a step-by-step plan for lowering the difficulty.</p>
+
+        <h2 id="faq">Frequently asked questions</h2>
+        {% for faq in faqs %}
+        <h3>{{ faq.q }}</h3>
+        <p>{{ faq.a }}</p>
+        {% endfor %}
+    </section>
 </div>
 {% endblock %}

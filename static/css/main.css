@@ -221,3 +221,78 @@ select:focus-visible {
 .info-toggle a {
     color: var(--primary-color);
 }
+
+/* Landing page intro, "How it works" and FAQ */
+.modern-card p.home-intro {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--muted-text-color);
+}
+
+.modern-card h2.home-form-heading {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.home-info-container {
+    display: flex;
+    justify-content: center;
+}
+
+.modern-card.home-info {
+    max-width: 800px;
+    margin: 0 2rem 2rem;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.home-info h2 {
+    font-size: 1.3rem;
+    margin: 0 0 1rem;
+}
+
+.home-info h2 + ol {
+    margin-bottom: 1rem;
+}
+
+.home-info h2#faq {
+    margin-top: 2rem;
+}
+
+.home-info h3 {
+    font-size: 1.05rem;
+    color: var(--card-title-color);
+    margin: 1.25rem 0 0.4rem;
+}
+
+.home-info ol {
+    padding-left: 1.25rem;
+}
+
+.home-info li {
+    margin-bottom: 0.5rem;
+}
+
+.modern-card.home-info p {
+    font-size: 1rem;
+}
+
+.home-info a {
+    color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .modern-card.home-info {
+        margin: 0 1rem 1.5rem;
+        padding: 1.5rem;
+    }
+}
+
+.modern-card p.home-links {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.home-links a {
+    color: var(--primary-color);
+}

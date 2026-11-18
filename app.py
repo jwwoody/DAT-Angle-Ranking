@@ -39,6 +39,110 @@ if not os.getenv('SECRET_KEY'):
 
 SITE_URL = 'https://www.datangleranking.com'
 
+# Home page FAQ. Rendered as visible HTML and as FAQPage JSON-LD from the same
+# data so the two always match.
+HOME_FAQS = [
+    {
+        'q': 'What is angle ranking on the DAT?',
+        'a': 'Angle ranking, which the ADA calls angle discrimination, is one of the six sections '
+             'of the Perceptual Ability Test (PAT) on the Dental Admission Test. Each question shows '
+             'four angles and asks you to rank them from smallest to largest. The angles often differ '
+             'by only a few degrees and are drawn with different arm lengths and directions, so it '
+             'takes practice to judge them quickly and accurately.',
+    },
+    {
+        'q': 'How do I customize the difficulty?',
+        'a': 'Enter an angle difference from 1 to 36 degrees. Each of the four angles is exactly '
+             'that many degrees larger than the next smallest one. A difference of 30 is easy; a '
+             'difference of a few degrees is much harder and is good practice for the closest angles '
+             'on the test. Start at a setting where you get most questions right, then lower it as '
+             'your accuracy improves.',
+    },
+    {
+        'q': 'How are the practice angles generated?',
+        'a': 'Every question is randomly generated. All four angles fall between 40 and 150 degrees, '
+             'each arm has a random length, and each angle is rotated to a random direction, so you '
+             'have to judge the opening at the vertex instead of relying on line length or orientation. '
+             'You can generate as many questions as you like.',
+    },
+    {
+        'q': 'Is the DAT angle ranking practice tool free? Do I need an account?',
+        'a': 'Yes, it is free. There is no signup, account, download or question limit. The site is '
+             'supported by ads.',
+    },
+    {
+        'q': 'Do I get feedback on my answers?',
+        'a': 'Yes. After you submit a ranking, the tool tells you whether it was correct. If it was '
+             'not, it shows the correct order, for example 3<1<4<2. Choose Play Again for a new set '
+             'at the same difficulty, or Change Angle Difference to pick a new setting.',
+    },
+    {
+        'q': 'Is this the same as the real DAT?',
+        'a': 'No. This is an independent practice tool and is not affiliated with or endorsed by the '
+             'American Dental Association. On the real test, angle questions are multiple choice and '
+             'timed. Here you enter the order yourself and there is no timer, which makes it useful for '
+             'building accuracy. For the official format, question count and time limit, see the ADA '
+             'DAT Candidate Guide.',
+    },
+]
+
+HOME_DESCRIPTION = ('Free, customizable DAT angle ranking practice. Choose an angle difference from '
+                    '1 to 36 degrees, rank four randomly generated angles from smallest to largest, '
+                    'and get instant feedback. No signup required.')
+
+
+def home_structured_data():
+    """JSON-LD objects for the home page (WebApplication + FAQPage)."""
+    web_app = {
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        '@id': SITE_URL + '/#app',
+        'name': 'DAT Angle Ranking Practice',
+        'alternateName': 'DAT Angle Ranking Generator',
+        'url': SITE_URL + '/',
+        'description': HOME_DESCRIPTION,
+        'applicationCategory': 'EducationalApplication',
+        'operatingSystem': 'Any (runs in a web browser)',
+        'browserRequirements': 'Requires a modern web browser',
+        'isAccessibleForFree': True,
+        'offers': {
+            '@type': 'Offer',
+            'price': '0',
+            'priceCurrency': 'USD',
+        },
+        'featureList': [
+            'Customizable angle difference from 1 to 36 degrees',
+            'Unlimited randomly generated angle ranking questions',
+            'Instant feedback with the correct order',
+            'No signup or account required',
+        ],
+        'audience': {
+            '@type': 'EducationalAudience',
+            'educationalRole': 'student',
+            'audienceType': 'Pre-dental students preparing for the DAT Perceptual Ability Test',
+        },
+        'publisher': {'@id': SITE_URL + '/#organization'},
+    }
+    faq_page = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': [
+            {
+                '@type': 'Question',
+                'name': faq['q'],
+                'acceptedAnswer': {'@type': 'Answer', 'text': faq['a']},
+            }
+            for faq in HOME_FAQS
+        ],
+    }
+    return [web_app, faq_page]
+
+
+def render_home(**context):
+    return render_template('user_input.html', faqs=HOME_FAQS,
+                           home_description=HOME_DESCRIPTION,
+                           structured_data=home_structured_data(), **context)
+
 
 @app.context_processor
 def inject_site_urls():
@@ -144,6 +248,18 @@ def ads_txt():
         app.logger.error('ads.txt not found')
         abort(404)
 
+# Serve llms.txt from root (plain-language site summary for AI assistants)
+@app.route('/llms.txt')
+def llms_txt():
+    try:
+        response = make_response(send_from_directory(os.path.join(app.root_path, 'static'), 'llms.txt'))
+        response.headers['Cache-Control'] = 'public, max-age=86400'  # Cache for 24 hours
+        response.headers['Content-Type'] = 'text/plain; charset=utf-8'
+        return response
+    except FileNotFoundError:
+        app.logger.error('llms.txt not found')
+        abort(404)
+
 # Serve sitemap.xml from root. This is the hand-maintained static/sitemap.xml
 # (https URLs with lastmod); keep it in sync when adding pages.
 @app.route('/sitemap.xml')
@@ -165,21 +281,21 @@ def send():
             variance_input = request.form.get('variance')
             if not variance_input:
                 app.logger.warning('No variance input provided')
-                return render_template('user_input.html', error='Please enter a variance value')
+                return render_home(error='Please enter a variance value')
             
             try:
                 tolerance_val = int(variance_input)
                 if tolerance_val <= 0 or tolerance_val > 36:
-                    return render_template('user_input.html', error='Variance must be between 1 and 36')
+                    return render_home(error='Variance must be between 1 and 36')
                 session['tolerance'] = str(tolerance_val)
             except ValueError:
                 app.logger.warning(f'Invalid variance input: {variance_input}')
-                return render_template('user_input.html', error='Please enter a valid number')
+                return render_home(error='Please enter a valid number')
             
             session['plot_exists'] = None
             return redirect(url_for('practice'))
         
-        return render_template('user_input.html')
+        return render_home()
     except Exception as e:
         app.logger.error(f'Error in send route: {str(e)}')
         abort(500)
@@ -238,10 +354,10 @@ def practice():
     try:
         # Ensure required session variables are set
         if 'tolerance' not in session:
-            # Set a default tolerance and redirect to input page
+            # Visiting /practice directly (bookmarks, search results, crawlers):
+            # start with the default 30-degree difference instead of redirecting.
             session['tolerance'] = '30'
             session['plot_exists'] = None
-            return redirect(url_for('send'))
 
         resultOutput = 'Push Submit to check answer'
 

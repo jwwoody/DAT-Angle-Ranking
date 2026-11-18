@@ -45,6 +45,8 @@ static/*
 !static/css/main.css
 !static/robots.txt
 !static/sitemap.xml
+!static/llms.txt
+!static/example_angle.jpg
 
 # Temporary generated files
 static/tmp*.png

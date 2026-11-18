@@ -34,6 +34,11 @@ Randomly generated angle ranking practice problems for the DAT. User specified t
 6. **Open in browser**
    Go to http://localhost:5000
 
+7. **Run the tests**
+   ```bash
+   python -m unittest discover tests
+   ```
+
 ## Demo Video
 https://www.youtube.com/watch?v=Z1RJmh_OqeA 
 

@@ -4,6 +4,7 @@ Allow: /practice
 Allow: /sitemap.xml
 Allow: /favicon.ico
 Allow: /robots.txt
+Allow: /llms.txt
 Disallow: /static/tmp*.png
 Disallow: /__pycache__/
 Disallow: /dat/

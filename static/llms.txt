@@ -1,0 +1,35 @@
+# DAT Angle Ranking
+
+> DAT Angle Ranking (https://www.datangleranking.com) is a free, customizable DAT angle ranking practice tool for pre-dental students preparing for the Perceptual Ability Test (PAT) of the Dental Admission Test. It generates unlimited random angle ranking questions. Users choose the angle difference (1 to 36 degrees between each angle), rank four angles from smallest to largest, and get instant feedback with the correct order. No signup, account or payment is required.
+
+Key facts:
+
+- Price: free, supported by ads. No signup, no download, no question limit.
+- Customizable difficulty: the user sets the difference between consecutive angles, from 1 degree (hardest) to 36 degrees (easiest). The default is 30.
+- Question generation: four angles between 40 and 150 degrees, with random arm lengths and random rotation, so line length and orientation can't be used as shortcuts.
+- Feedback: after submitting a ranking, the tool says whether it was correct and, if not, shows the correct order (for example 3<1<4<2).
+- Angle ranking (the ADA calls it angle discrimination) is one of six sections of the DAT Perceptual Ability Test.
+- Independent practice tool. DAT is a registered trademark of the American Dental Association (ADA); this site is not affiliated with or endorsed by the ADA.
+
+## Practice tool
+
+- [Free DAT angle ranking practice (choose difficulty)](https://www.datangleranking.com/): Home page with the difficulty picker, how it works and FAQ
+- [Practice session](https://www.datangleranking.com/practice): Starts a practice set; defaults to a 30-degree difference if no difficulty was chosen
+
+## Guides and articles
+
+- [How to rank angles on the DAT: strategy guide](https://www.datangleranking.com/guide): Question format, techniques for comparing close angles, common mistakes and a practice plan
+- [All articles](https://www.datangleranking.com/articles)
+- [How to compare angles that are almost the same size](https://www.datangleranking.com/articles/comparing-close-angles)
+- [Common angle ranking mistakes and how to fix them](https://www.datangleranking.com/articles/angle-ranking-mistakes)
+- [A practice progression for angle ranking, from easy to hard](https://www.datangleranking.com/articles/practice-progression)
+- [Why your eyes misjudge angles](https://www.datangleranking.com/articles/why-your-eyes-misjudge-angles)
+- [The DAT Perceptual Ability Test: where angle ranking fits](https://www.datangleranking.com/articles/perceptual-ability-test-overview)
+
+## Optional
+
+- [About](https://www.datangleranking.com/about)
+- [Contact](https://www.datangleranking.com/contact)
+- [Privacy policy](https://www.datangleranking.com/privacy)
+- [Terms of service](https://www.datangleranking.com/terms)
+- [Sitemap](https://www.datangleranking.com/sitemap.xml)

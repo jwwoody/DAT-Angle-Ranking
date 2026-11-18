@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_description %}Free DAT Angle Ranking Generator: Practice, customize, and master DAT angle ranking and angle discrimination for the PAT. Get help with DAT angle ranking, angle discrimination, and predental PAT prep. Use our interactive angle ranking generator for DAT angle ranking help, angle discrimination generator, and full customization. Practice DAT perceptual ability skills with a free angle ranking and discrimination tool.{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Free, customizable DAT angle ranking practice for the Perceptual Ability Test. Generate unlimited angle ranking questions, set your own difficulty and get instant feedback. No signup required.{% endblock %}">
     <meta name="keywords" content="Angle ranking generator free, angle ranking, angle discrimination, angle generator, angle ranking generator, dat exam, perceptual ability, education, practice">
     <meta name="author" content="DAT Angle Ranking">
     <meta property="og:title" content="{% block og_title %}Customizable DAT Angle Ranking and Angle Discrimination Game{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Practice ranking angles visually.{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Free, customizable DAT angle ranking practice. Set the angle difference, rank four random angles and get instant feedback.{% endblock %}">
     <meta property="og:image" content="{{ site_url }}{{ url_for('static', filename='example_angle.jpg') }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ canonical_url }}">
@@ -29,6 +29,7 @@
     {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
+      "@id": "https://www.datangleranking.com/#organization",
       "name": "DAT Angle Ranking",
       "url": "https://www.datangleranking.com",
       "description": "Free interactive DAT angle ranking and discrimination practice tool for dental school preparation",
@@ -39,6 +40,9 @@
       }
     }
     </script>
+    {% if structured_data %}{% for item in structured_data %}
+    <script type="application/ld+json">{{ item|tojson(indent=2) }}</script>
+    {% endfor %}{% endif %}
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
