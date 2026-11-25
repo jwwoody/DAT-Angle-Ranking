@@ -15,18 +15,6 @@
 {% block body %}
 <div class="center-container">
     <div class="modern-card" style="max-width: 700px;">
-        <!-- Top Ad -->
-        <div class="ad-container">
-            <ins class="adsbygoogle responsive-ad"
-                 style="display:block"
-                 data-ad-client="ca-pub-4473065776641796"
-                 data-ad-slot="2337474944"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
         <img src="/static/tmp{{tmpID}}.png" alt="Four angles for DAT angle ranking practice - rank from smallest to largest angle" style="display: block; margin: 0 auto 2rem auto; width: 100%; max-width: 520px; height: auto; border-radius: 14px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); background: #f8fafc; padding: 0.7rem;">
         <h2 id="rank-instructions" style="font-size: 1.2rem; color: #2a4365; margin-bottom: 1.1rem;">Rank the four angles from smallest to largest</h2>
         <form method="POST" style="text-align: left;">
@@ -40,13 +28,27 @@
                 <input class="btn btn-primary" type="submit" name="Submit!" value="Submit!">
             </div>
             <div role="status" aria-live="polite" style="margin-top: 1.2rem; font-weight: 500; color: var(--primary-color); font-size: 1.08em; text-align: center; width: 100%;">
-                {% if result %}{{result}}{% endif %}
+                {% if feedback %}{{ feedback.headline }}{% elif result %}{{ result }}{% endif %}
+                {% if feedback and feedback.sizes %}<div class="muted-text" style="font-size: 0.9em; font-weight: 400; margin-top: 0.3rem;">{{ feedback.sizes }}</div>{% endif %}
             </div>
             <div style="margin-top: 2.2rem; display: flex; gap: 0.7rem; flex-wrap: wrap; justify-content: center;">
                 <input class="btn btn-primary" name="Play Again (Same Angle Difference)" type="submit" value="Play Again (Same Angle Difference)">
                 <input class="btn btn-primary" type="submit" value="Change Angle Difference" name="Change Angle Difference">
             </div>
         </form>
+        {% if attempts %}<p class="muted-text" style="font-size: 0.9rem; margin: 1.2rem 0 0 0;">Score: {{ correct }}/{{ attempts }}</p>{% endif %}
+        <!-- Ad below the practice content -->
+        <div class="ad-container">
+            <ins class="adsbygoogle responsive-ad"
+                 style="display:block"
+                 data-ad-client="ca-pub-4473065776641796"
+                 data-ad-slot="2337474944"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
 </div>
 {% endblock %}
