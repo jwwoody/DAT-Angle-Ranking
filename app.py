@@ -360,6 +360,7 @@ def practice():
             session['plot_exists'] = None
 
         resultOutput = 'Push Submit to check answer'
+        feedback = None
 
         if request.method == 'POST':
             try:
@@ -395,17 +396,25 @@ def practice():
                             session['plot_exists'] = None
                             break
                     else:
-                        answer = [int(session['smallest']), int(session['secondSmallest']), int(session['secondLargest']), int(session['largest'])]
-                        if userAnswer == answer:
-                            resultOutput = 'Correct!'
+                        user_order = [smallest, secondSmallest, secondLargest, largest]
+                        if len(set(user_order)) != 4:
+                            resultOutput = 'Use each angle number once.'
                         else:
-                            resultOutput = 'Wrong... {}<{}<{}<{}'.format(
-                                np.where(np.array(answer) == 1)[0][0] + 1,
-                                np.where(np.array(answer) == 2)[0][0] + 1,
-                                np.where(np.array(answer) == 3)[0][0] + 1,
-                                np.where(np.array(answer) == 4)[0][0] + 1)
+                            answer = [int(session['smallest']), int(session['secondSmallest']), int(session['secondLargest']), int(session['largest'])]
+                            is_correct = userAnswer == answer
+                            # Score each question once, even if Submit is pressed repeatedly.
+                            if not session.get('answered'):
+                                session['answered'] = True
+                                session['attempts'] = session.get('attempts', 0) + 1
+                                if is_correct:
+                                    session['correct'] = session.get('correct', 0) + 1
+                            feedback = build_feedback(answer, session.get('angles'), is_correct)
+                            resultOutput = feedback['headline']
                 elif "Change Angle Difference" in request.form:
+                    # Keep the running score when the user switches difficulty.
+                    kept = {k: session[k] for k in ('attempts', 'correct') if k in session}
                     session.clear()
+                    session.update(kept)
                     return redirect(url_for('send'))
                 elif "Play Again (Same Angle Difference)" in request.form:
                     session['plot_exists'] = None
@@ -435,18 +444,34 @@ def practice():
                 session['secondSmallest'] = str(answers[1])
                 session['secondLargest'] = str(answers[2])
                 session['largest'] = str(answers[3])
-                # Embed the result in the html output.
-                data = base64.b64encode(buf.getbuffer()).decode("ascii")
+                # Degrees of each panel (Angle 1..4), shown after the user answers.
+                session['angles'] = [int(a) for a in test_angles]
+                session['answered'] = False
                 session['plot_exists'] = 'yip!'
             except Exception as e:
                 app.logger.error(f'Error generating plot: {str(e)}')
                 return redirect(url_for('send'))
 
         form = Form()
-        return render_template('game_play.html', form=form, result=resultOutput, tmpID=session.get('id', 'default'))
+        return render_template('game_play.html', form=form, result=resultOutput, feedback=feedback,
+                               attempts=session.get('attempts', 0), correct=session.get('correct', 0),
+                               tmpID=session.get('id', 'default'))
     except Exception as e:
         app.logger.error(f'Error in practice route: {str(e)}')
         abort(500)
+
+
+def build_feedback(answer, angles, is_correct):
+    """Short result for a submitted ranking.
+
+    answer: rank (1-4) of each panel, indexed by panel.
+    angles: degrees of each panel, indexed by panel (None for sessions from before this field existed).
+    """
+    correct_order = [answer.index(rank) + 1 for rank in range(1, 5)]
+    order_text = ' < '.join(str(p) for p in correct_order)
+    headline = 'Correct!' if is_correct else f'Wrong. Correct order: {order_text}'
+    sizes = ' \u00b7 '.join(f'{p}: {angles[p - 1]}\u00b0' for p in correct_order) if angles else ''
+    return {'headline': headline, 'correct': is_correct, 'sizes': sizes}
 
 def test(angles):
     try:
@@ -536,6 +561,8 @@ def test(angles):
         except Exception as e:
             app.logger.error(f'Error saving plot: {str(e)}')
             raise
+        finally:
+            plt.close(fig)  # free the figure; otherwise every question leaks memory
         
         return buf
     except Exception as e:

@@ -68,6 +68,64 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertIn('Rank the four angles', resp.get_data(as_text=True))
 
+    def _correct_and_wrong_forms(self):
+        with self.client.session_transaction() as sess:
+            order = [sess['smallest'], sess['secondSmallest'], sess['secondLargest'], sess['largest']]
+            angles = sess['angles']
+        # Session stores each panel's rank; build "panel numbers from smallest to largest".
+        ranks = [int(r) for r in order]
+        correct = [str(ranks.index(r) + 1) for r in range(1, 5)]
+        wrong = [correct[1], correct[0], correct[2], correct[3]]
+        keys = ['smallest', 'secondSmallest', 'secondLargest', 'largest']
+        return dict(zip(keys, correct)), dict(zip(keys, wrong)), angles
+
+    def test_practice_shows_degrees_and_scores_once(self):
+        self.client.post('/', data={'variance': '5'})
+        self.client.get('/practice')
+        correct, wrong, angles = self._correct_and_wrong_forms()
+        self.assertEqual(sorted(angles)[1] - sorted(angles)[0], 5)
+
+        html = self.client.post('/practice', data={**wrong, 'Submit!': 'Submit!'}).get_data(as_text=True)
+        self.assertIn('Wrong. Correct order:', html)
+        for deg in angles:
+            self.assertIn(f'{deg}\u00b0', html)
+        self.assertIn('Score: 0/1', html)
+
+        # Re-submitting the same question (even correctly) does not change the score.
+        html = self.client.post('/practice', data={**correct, 'Submit!': 'Submit!'}).get_data(as_text=True)
+        self.assertIn('Correct!', html)
+        with self.client.session_transaction() as sess:
+            self.assertEqual((sess['attempts'], sess.get('correct', 0)), (1, 0))
+
+        # Next question answered correctly counts.
+        self.client.post('/practice', data={'Play Again (Same Angle Difference)': 'x'})
+        correct, _, _ = self._correct_and_wrong_forms()
+        self.client.post('/practice', data={**correct, 'Submit!': 'Submit!'})
+        with self.client.session_transaction() as sess:
+            self.assertEqual((sess['attempts'], sess['correct']), (2, 1))
+
+    def test_practice_rejects_duplicate_ranks_without_scoring(self):
+        self.client.get('/practice')
+        data = {'smallest': '1', 'secondSmallest': '1', 'secondLargest': '3', 'largest': '4', 'Submit!': 'Submit!'}
+        html = self.client.post('/practice', data=data).get_data(as_text=True)
+        self.assertIn('Use each angle number once.', html)
+        with self.client.session_transaction() as sess:
+            self.assertNotIn('attempts', sess)
+
+    def test_change_difficulty_keeps_score(self):
+        self.client.get('/practice')
+        correct, _, _ = self._correct_and_wrong_forms()
+        self.client.post('/practice', data={**correct, 'Submit!': 'Submit!'})
+        resp = self.client.post('/practice', data={'Change Angle Difference': 'x'})
+        self.assertEqual(resp.status_code, 302)
+        with self.client.session_transaction() as sess:
+            self.assertEqual(sess['correct'], 1)
+            self.assertNotIn('tolerance', sess)
+
+    def test_practice_ad_is_below_content(self):
+        html = self.client.get('/practice').get_data(as_text=True)
+        self.assertLess(html.index('name="Change Angle Difference"'), html.index('<ins class="adsbygoogle'))
+
     def test_choose_difficulty_redirects_to_practice(self):
         resp = self.client.post('/', data={'variance': '10'})
         self.assertEqual(resp.status_code, 302)
